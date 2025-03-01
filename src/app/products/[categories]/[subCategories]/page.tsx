@@ -7,8 +7,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { AdminCard } from "@/components/CardCompoAdmin";
-import CardCompo from "@/components/CardCompo";
-import { Link } from "lucide-react";
+
 
 interface Products {
 	id: string;

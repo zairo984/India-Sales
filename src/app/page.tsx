@@ -1,11 +1,7 @@
 "use client";
 
 import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
-import Recommendation from "@/components/Recommendation";
-import Certificates from "@/components/certificate";
-import axios from "axios";
-import { useEffect, useState } from "react";
+
 
 export default function Home() {
 	// const [categories, setCategories] = useState<string[]>([]);

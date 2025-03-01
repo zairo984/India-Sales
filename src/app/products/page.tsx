@@ -1,16 +1,13 @@
 "use client";
 
-import Hero from "@/components/Hero";
-import Navbar from "@/components/Navbar";
+
 import Recommendation from "@/components/Recommendation";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+
 import { AdminCard } from "@/components/CardCompoAdmin";
-import CardCompo from "@/components/CardCompo";
-import { Link } from "lucide-react";
-import Certificates from "@/components/certificate";
+
 
 interface Products {
 	id: string;

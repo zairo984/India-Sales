@@ -3,7 +3,7 @@
 import React from "react";
 import jwt from "jsonwebtoken";
 import axios from "axios";
-import bcrypt from "bcryptjs";
+
 
 const page = () => {
 
