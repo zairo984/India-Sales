@@ -17,7 +17,7 @@ const page = () => {
             const response = await axios.post("/api/signin",{username,email,password});
             const token = response.data.token;
             localStorage.setItem("IndiaSalestoken",token);
-            const decodedToken = jwt.decode(token) as any;
+            const decodedToken = jwt.decode(token);
             window.location.href = "/admin";
             console.log(decodedToken);
         }catch(error){

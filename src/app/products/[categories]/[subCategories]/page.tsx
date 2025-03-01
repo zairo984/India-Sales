@@ -46,7 +46,7 @@ const Product = () => {
 	
 			// Filter the data safely
 			const filteredData = res.data.products.filter(
-				(item: any) => item?.subCategory?.toLowerCase() === subCategory.toLowerCase()
+				(item: Products) => item?.subCategory?.toLowerCase() === subCategory.toLowerCase()
 			);
 	
 			console.log("filteredData: ", filteredData);

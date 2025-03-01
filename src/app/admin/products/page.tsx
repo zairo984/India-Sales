@@ -17,7 +17,14 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 
+interface SubCategory {
+	name: string;
+	category: string;
+}
+
 const Admin = () => {
+	
+
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 	const [formOpen, setFormOpen] = useState(false);
 	const [subCategory, setSubCategory] = useState("");
@@ -33,7 +40,7 @@ const Admin = () => {
 	const [category, setCategory] = useState("");
 	const [formCategory, setFormCategory] = useState([]);
 	const [formSubCategory, setFormSubCategory] = useState({});
-	const [formSubCategoryList, setFormSubCategoryList] = useState<any[]>([]);
+	const [formSubCategoryList, setFormSubCategoryList] = useState<SubCategory[]>([]);
 	const [loading, setLoading] = useState(true);
 
 	async function getProduct() {
@@ -72,13 +79,13 @@ const Admin = () => {
 		getCatAndSubCat();
 	}, []);
 
-	const subArray = Object.values(formSubCategory);
+	const subArray = Object.values(formSubCategory) as SubCategory[];
 
 	useEffect(() => {
 		if (category && Array.isArray(subArray)) {
 			const subNames = subArray
-				.filter((sub: any) => sub.category === category)
-				.map((sub: any) => sub.name);
+				.filter((sub:SubCategory) => sub.category === category)
+				.map((sub:{name:string}) => sub.name);
 			setFormSubCategoryList(subNames);
 		} else {
 			setFormSubCategoryList([]);

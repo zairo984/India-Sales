@@ -17,7 +17,14 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
+
 const Admin = () => {
+	interface Category {
+		id: string;
+		name: string;
+		description: string;
+		imageUrl: string;
+	}
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 	const [category, setCategory] = useState<
 		| { name: string; description: string; imageUrl: string; id: string }[]
@@ -29,7 +36,7 @@ const Admin = () => {
 	const [uploadedImageUrl, setUploadedImageUrl] = useState("");
 	const [loading, setLoading] = useState(true);
 	const [editFormOpen, setEditFormOpen] = useState(false);
-	const [selectedCategory, setSelectedCategory] = useState<any>(null);
+	const [selectedCategory, setSelectedCategory] = useState<Category|null>(null);
 
 	/*************  ✨ Fetch Categories *************/
 	async function getCategory() {
@@ -59,13 +66,13 @@ const Admin = () => {
 	}
 
 	/*************  ✨ Open Edit Modal *************/
-	const openEditForm = (item: any) => {
+	const openEditForm = (item: Category) => {
 		setSelectedCategory(item);
 		setEditFormOpen(true);
 	};
 
 	/*************  ✨ Update Category *************/
-	async function EditCategory(e: any) {
+	async function EditCategory(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		try {
 			await axios.put(

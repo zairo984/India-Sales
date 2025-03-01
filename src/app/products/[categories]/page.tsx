@@ -28,7 +28,7 @@ const Categories = () => {
 
 			// Filter the data correctly
 			const filteredData = res.data.subCategories?.filter(
-				(item: any) => item.category.toLowerCase() === category
+				(item:SubCategory) => item.category.toLowerCase() === category
 			);
 			console.log("filteredData: ", filteredData);
 
