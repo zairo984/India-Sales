@@ -1,4 +1,5 @@
 import Certificates from "@/components/certificate";
+import Link from "next/link";
 
 export default function AboutPage() {
 	return (
@@ -51,9 +52,9 @@ export default function AboutPage() {
 			</div>
 
 			<div className="text-center mt-10">
-				<a href="/products" className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md text-lg">
+				<Link href="/products" className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md text-lg">
 					Explore Our Collection
-				</a>
+				</Link>
 			</div>
 			<Certificates />
 		</div>
