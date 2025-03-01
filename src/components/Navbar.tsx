@@ -7,9 +7,6 @@ import axios from "axios";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
-interface Category {
-	name: string;
-}
 
 interface SubCategory {
 	name: string;

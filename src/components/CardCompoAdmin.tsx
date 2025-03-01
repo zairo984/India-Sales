@@ -7,7 +7,7 @@ import {
 	CardTitle,
 } from "./ui/card";
 import { Button } from "./ui/button";
-import axios from "axios";
+
 
 type CardProps = {
 	title: string;

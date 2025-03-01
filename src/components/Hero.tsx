@@ -13,10 +13,10 @@ const Hero = () => {
 				autoPlay
 				muted
 				loop
-				// className={`opacity-100 h-[95vh] border border-green-700 -z-10 invisible md:visible ${
-				//   fadedImage && "opacity-70"
-				// }`}
-				className=" h-full w-screen object-cover"
+				className={`h-full w-screen object-cover ${
+				  fadedImage && "opacity-70"
+				}`}
+
 			></video>
 
 			{/* <img

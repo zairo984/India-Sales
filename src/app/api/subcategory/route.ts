@@ -36,7 +36,6 @@ export async function GET(req: NextRequest) {
 }
 export async function POST(req: NextRequest) {
 	try{
-		const subCategory = await SubCategory.find()
 		const body = await req.json();
 		if(await SubCategory.findOne({name:body.name})){
 			return NextResponse.json({message:"Category already exists"},{status:400})
@@ -46,7 +45,7 @@ export async function POST(req: NextRequest) {
 			console.log(category)
 			return NextResponse.json({message:"success"},{status:200})
 		}
-		console.log(subCategory)
+	
 		
 	}catch(err){
 		console.log(err)
