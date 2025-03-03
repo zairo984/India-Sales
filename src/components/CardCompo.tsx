@@ -33,6 +33,7 @@ const CardCompo:React.FC<CardProps> = ({title,description,imageUrl,id}) => {
 			<CardTitle className="text-lg font-bold truncate">{title}</CardTitle>
 			<CardDescription className="text-sm text-gray-600 line-clamp-2">
 				{description}
+				{id}
 			</CardDescription>
 		</CardHeader>
 

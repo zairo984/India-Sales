@@ -50,7 +50,7 @@ export async function DELETE(req: NextRequest) {
 		const body = await req.json();
 		const id = body.id;
 		const product = await Product.findByIdAndDelete(id);
-		// console.log(product)
+		console.log(product)
 		return NextResponse.json({ message: "success" }, { status: 200 });
 	} catch (err) {
 		console.log(err);

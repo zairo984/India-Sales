@@ -59,7 +59,7 @@ export async function DELETE(req: NextRequest) {
 		const body = await req.json();
 		const id = body.id;
 		const subCategory = await SubCategory.findByIdAndDelete(id);
-		const products = await Product.deleteMany({ subcategory: subCategory?.name });
+		await Product.deleteMany({ subcategory: subCategory?.name });
 		return NextResponse.json({ message: "Subcategory and Related Products Deleted" }, { status: 200 });
 	} catch (err) {
 		console.log(err);
