@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 		await connectDB(); // ✅ Ensure database connection
 
 		const body = await req.json();
-		console.log("Login Request:", body);
+		// console.log("Login Request:", body);
 
 		// ✅ Find user by email
 		const user = await User.findOne({ email: body.email });

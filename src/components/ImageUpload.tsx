@@ -44,10 +44,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 			if(response.data.status  != 200){toast.error(response.data.message)}
 			else{toast(response.data.message);}
 			const data = response.data;
-			console.log("Uploaded Image URL:", data.imageUrl);
+			// console.log("Uploaded Image URL:", data.imageUrl);
 			setUploadedImageUrl(data.imageUrl); // ✅ Show uploaded image
 		} catch (error) {
-			console.log("Error uploading image:", error);
+			// console.log("Error uploading image:", error);
 			toast.error("Error uploading image");
 		}
 	};

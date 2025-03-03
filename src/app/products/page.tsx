@@ -30,7 +30,7 @@ const ProductsPage = () => {
 		try {
 			const res = await axios.get("/api/products");
 			setProducts(res.data.products);
-			console.log("Fetched products:", res.data.products);
+			// console.log("Fetched products:", res.data.products);
 		} catch (error) {
 			console.error("Error fetching products:", error);
 		}

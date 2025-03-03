@@ -29,7 +29,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
 	try {
 		const body = await req.json();
-		console.log(body);
+		// console.log(body);
 		if (await Product.findOne({ name: body.name })) {
 			return NextResponse.json(
 				{ message: "Category already exists" },
@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
 			);
 		}
 		const category = await Product.create(body);
-		console.log(category);
+		// console.log(category);
 		return NextResponse.json({ message: "success" }, { status: 200 });
 	} catch (err) {
 		console.log(err);
@@ -46,11 +46,11 @@ export async function POST(req: NextRequest) {
 }
 export async function DELETE(req: NextRequest) {
 	try {
-		console.log(req);
+		// console.log(req);
 		const body = await req.json();
 		const id = body.id;
 		const product = await Product.findByIdAndDelete(id);
-		console.log(product);
+		// console.log(product);
 		return NextResponse.json({ message: "success" }, { status: 200 });
 	} catch (err) {
 		console.log(err);

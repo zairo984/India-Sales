@@ -20,7 +20,7 @@ const Admin = () => {
 
 	const params = useParams();
 	const id = params?.id;
-	console.log("id", id);
+	// console.log("id", id);
 
 	async function getCategory() {
 		if (!id) return;
@@ -37,7 +37,7 @@ const Admin = () => {
 	useEffect(() => {
 		getCategory();
 	}, [id]);
-	console.log("category", category);
+	// console.log("category", category);
 
 	return (
 		<div className="flex">

@@ -19,7 +19,7 @@ const page = () => {
             localStorage.setItem("IndiaSalestoken",token);
             const decodedToken = jwt.decode(token);
             window.location.href = "/admin";
-            console.log(decodedToken);
+            // console.log(decodedToken);
         }catch(error){
             console.log(error)
         }

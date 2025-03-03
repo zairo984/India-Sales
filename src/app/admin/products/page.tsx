@@ -110,15 +110,15 @@ const Admin = () => {
 				},
 				{ headers: { "Content-Type": "application/json" } }
 			);
-			console.log(
-				name,
-				description,
-				uploadedImageUrl,
-				price,
-				quantity,
-				category,
-				subCategory
-			);
+			// console.log(
+			// 	name,
+			// 	description,
+			// 	uploadedImageUrl,
+			// 	price,
+			// 	quantity,
+			// 	category,
+			// 	subCategory
+			// );
 			toast.success(res.data.message);
 			setName("");
 			setDescription("");

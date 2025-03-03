@@ -21,7 +21,7 @@ export default function Home() {
 	// Function to fetch product details
 	const params = useParams();
 	const id = params?.id;
-	console.log("id", params);
+	// console.log("id", params);
 
 	function handleEnquiry(productName: string, price: number) {
 		const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
@@ -36,7 +36,7 @@ export default function Home() {
 		if (!id) return;
 
 		try {
-			console.log("id", params);
+			// console.log("id", params);
 			const res = await axios.get(`/api/products/${id}`);
 			// console.log("Fetched Product:", res.data);
 			setCategory(res?.data);

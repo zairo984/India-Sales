@@ -21,7 +21,7 @@ interface Products {
 const Product = () => {
 	const { subCategories } = useParams();
 	const subCategory = decodeURIComponent(subCategories as string);
-	console.log(subCategory)
+	// console.log(subCategory)
 	const [products, setproducts] = useState<Products[]>([]);
 
 	const fetchDropDownData = async () => {
@@ -29,7 +29,7 @@ const Product = () => {
 			const res = await axios.get(`/api/subcategory/`);
 	
 			// Debugging the response
-			console.log("API Response:", res.data);
+			// console.log("API Response:", res.data);
 	
 			if (!res.data.products) {
 				console.error("Error: products key not found in API response");
@@ -47,11 +47,11 @@ const Product = () => {
 				(item: Products) => item?.subCategory?.toLowerCase() === subCategory.toLowerCase()
 			);
 	
-			console.log("filteredData: ", filteredData);
+			// console.log("filteredData: ", filteredData);
 	
 			// Set filtered data to state
 			setproducts(filteredData);
-			console.log("Updated products state: ", filteredData);
+			// console.log("Updated products state: ", filteredData);
 		} catch (err: unknown) {
 			console.error("Error in fetching drop-down data: ", err);
 		}

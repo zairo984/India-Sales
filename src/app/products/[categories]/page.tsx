@@ -30,11 +30,11 @@ const Categories = () => {
 			const filteredData = res.data.subCategories?.filter(
 				(item:SubCategory) => item.category.toLowerCase() === category
 			);
-			console.log("filteredData: ", filteredData);
+			// console.log("filteredData: ", filteredData);
 
 			// Set filtered data to state
 			setSubCategories(filteredData);
-			console.log("subCategories: ", subCategories);
+			// console.log("subCategories: ", subCategories);
 		} catch (err: unknown) {
 			console.error("Error in fetching drop-down data: ", err);
 		}
@@ -44,7 +44,7 @@ const Categories = () => {
 		fetchDropDownData();
 	}, [category]);
 	useEffect(() => {
-		console.log("Updated Subcategories:", subCategories);
+		// console.log("Updated Subcategories:", subCategories);
 	}, [subCategories]);
 
 	return (
