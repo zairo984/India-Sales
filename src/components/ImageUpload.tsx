@@ -47,7 +47,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 			// console.log("Uploaded Image URL:", data.imageUrl);
 			setUploadedImageUrl(data.imageUrl); // ✅ Show uploaded image
 		} catch (error) {
-			// console.log("Error uploading image:", error);
+			console.log("Error uploading image:", error);
 			toast.error("Error uploading image");
 		}
 	};
