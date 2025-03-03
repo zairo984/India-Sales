@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 import Product from "@/models/products";
 import { connectDB } from "@/lib/db"; // Ensure you import your database connection
 
-export async function GET() {
+export async function GET(req: NextRequest) {
 	try {
 		await connectDB(); // Ensure DB is connected
 

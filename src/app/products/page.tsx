@@ -1,15 +1,11 @@
 "use client";
 
-
 import Recommendation from "@/components/Recommendation";
-
 import axios from "axios";
 import { useEffect, useState } from "react";
-
 import { AdminCard } from "@/components/CardCompoAdmin";
 
-
-interface Products {
+interface Product {
 	id: string;
 	name: string;
 	category: string;
@@ -20,43 +16,39 @@ interface Products {
 	imageUrl: string;
 }
 
-const Product = () => {
-	
-	const [products, setproducts] = useState<Products[]>([]);
+const ProductsPage = () => {
+	const [products, setProducts] = useState<Product[]>([]);
 
-	const fetchDropDownData = async () => {
+	const fetchProducts = async () => {
 		try {
-			const res = await axios.get(`/api/products/`);
-
-			setproducts(res.data.products);
-			console.log("subCategories: ", products);
-		} catch (err: unknown) {
-			console.error("Error in fetching drop-down data: ", err);
+			const res = await axios.get("/api/products");
+			setProducts(res.data.products);
+			console.log("Fetched products:", res.data.products);
+		} catch (error) {
+			console.error("Error fetching products:", error);
 		}
 	};
 
 	useEffect(() => {
-		fetchDropDownData();
+		fetchProducts();
 	}, []);
-
 
 	return (
 		<div>
 			<Recommendation />
 			<div className="flex flex-wrap gap-6 justify-center p-6">
-				{products.map((item, index) => (
-				<AdminCard
-
-						key={index}
+				{products.map((item) => (
+					<AdminCard
+						key={item.id}
 						title={item.name}
 						description={item.description}
 						imageUrl={item.imageUrl}
-						id = {item.id}
+						id={item.id}
 					/>
 				))}
 			</div>
-
 		</div>
 	);
 };
-export default Product;
+
+export default ProductsPage;

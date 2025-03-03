@@ -10,14 +10,13 @@ const Admin = () => {
   const router = useRouter();
 
 	useEffect(() => {
-		// ✅ Get token from localStorage
-		const token = localStorage.getItem("IndiaSalestoken");
-
-		// ✅ Redirect to /login if token is missing
-		if (!token) {
-			router.push("/signin");
+		if (typeof window !== "undefined") {
+			const token = localStorage.getItem("IndiaSalestoken");
+			if (!token) {
+				router.push("/signin");
+			}
 		}
-	}, []);
+	}, [router]); 
 
   return (
     <div className="flex">
