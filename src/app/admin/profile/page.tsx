@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import { Button } from "@/components/ui/button";
 import { FiUpload } from "react-icons/fi";
