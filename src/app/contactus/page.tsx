@@ -47,7 +47,7 @@ export default function Contact() {
 					Contact Us
 				</h2>
 				<p className="text-gray-600 text-center mb-6">
-					Send us a message and we'll get back to you soon!
+					Send us a message and we&apos;ll get back to you soon!
 				</p>
 
 				<form onSubmit={handleSubmit} className="space-y-4">
