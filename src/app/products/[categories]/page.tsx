@@ -35,7 +35,7 @@ const Categories = () => {
 			// Set filtered data to state
 			setSubCategories(filteredData);
 			console.log("subCategories: ", subCategories);
-		} catch (err: any) {
+		} catch (err: unknown) {
 			console.error("Error in fetching drop-down data: ", err);
 		}
 	};

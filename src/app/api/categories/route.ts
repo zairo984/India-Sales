@@ -7,7 +7,7 @@ import Product from "@/models/products";
 
 connectDB();
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 	try {
 		const categories = await Category.find();
 		const categoriesArray = categories.map((category) => ({

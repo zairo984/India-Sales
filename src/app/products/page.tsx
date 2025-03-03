@@ -30,7 +30,7 @@ const Product = () => {
 
 			setproducts(res.data.products);
 			console.log("subCategories: ", products);
-		} catch (err: any) {
+		} catch (err: unknown) {
 			console.error("Error in fetching drop-down data: ", err);
 		}
 	};

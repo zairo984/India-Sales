@@ -58,7 +58,7 @@ const Admin = () => {
 			});
 			toast.success("Category deleted successfully");
 			getCategory();
-		} catch (err) {
+		} catch (err:unknown) {
 			toast.error(
 				err.response?.data?.message || "Error deleting category"
 			);
@@ -82,7 +82,7 @@ const Admin = () => {
 			toast.success("Category updated successfully");
 			setEditFormOpen(false);
 			getCategory();
-		} catch (err) {
+		} catch (err:unknown) {
 			toast.error(
 				err.response?.data?.message || "Error updating category"
 			);
