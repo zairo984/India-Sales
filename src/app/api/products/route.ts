@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import Product from "@/models/products";
 
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 	try {
 		const product = await Product.find();
 
@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
 		}));
 
 		return NextResponse.json({ products: productArray }, { status: 200 });
-	} catch (err: any) {
+	} catch (err: unknown) {
 		const error = new Error(err);
 		return NextResponse.json({ error: error.message }, { status: 500 });
 	}

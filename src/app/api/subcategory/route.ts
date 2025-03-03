@@ -8,7 +8,7 @@ import SubCategory from "@/models/subCategories";
 
 connectDB();
 
-export async function GET(req: NextRequest) {
+export async function GET() {
 	try {
 		const product = await Product.find();
 
@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
 			{ products: productArray},
 			{ status: 200 }
 		);
-	} catch (err: any) {
+	} catch (err: unknown) {
 		const error = new Error(err);
 		return NextResponse.json({ error: error.message }, { status: 500 });
 	}

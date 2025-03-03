@@ -26,7 +26,7 @@ export default function Contact() {
 			const response = await axios.post("/api/contact", formData);
 			toast.success(response.data.message);
 			setFormData({ name: "", email: "", message: "" }); // Clear form
-		} catch (error: any) {
+		} catch (error: unknown) {
 			toast.error(error.response?.data?.error || "Failed to send message");
 		} finally {
 			setLoading(false);
