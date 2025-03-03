@@ -43,7 +43,7 @@ const CertificationUpload = () => {
       setCertName("");
       setFile(null);
       setPreview(null);
-    } catch (err: any) {
+    } catch (err: unknown) {
       toast.error(err.response?.data?.message || "File upload failed.");
     } finally {
       setLoading(false);

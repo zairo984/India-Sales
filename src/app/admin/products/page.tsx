@@ -69,7 +69,7 @@ const Admin = () => {
 			const res = await axios.delete(`/api/products/`, { data: { id } });
 			toast.success(res.data.message);
 			getProduct();
-		} catch (err: any) {
+		} catch (err) {
 			toast.error(err.response.data.message);
 		}
 	}
@@ -123,7 +123,7 @@ const Admin = () => {
 			setPrice("");
 			setFormOpen(false);
 			getProduct();
-		} catch (err: any) {
+		} catch (err) {
 			toast.error(err.response?.data?.message || "An unexpected error occurred.");
 		}
 	}

@@ -54,7 +54,7 @@ const Product = () => {
 			// Set filtered data to state
 			setproducts(filteredData);
 			console.log("Updated products state: ", filteredData);
-		} catch (err: any) {
+		} catch (err: unknown) {
 			console.error("Error in fetching drop-down data: ", err);
 		}
 	};

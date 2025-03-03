@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
 			{ categories: categoriesArray, subCategories: subCategoriesArray },
 			{ status: 200 }
 		);
-	} catch (err: any) {
+	} catch (err: unknown) {
 		const error = new Error(err);
 		return NextResponse.json({ error: error.message }, { status: 500 });
 	}
@@ -75,7 +75,7 @@ export async function DELETE(req: NextRequest) {
 
 		return NextResponse.json({ message: "Category and related products deleted successfully" }, { status: 200 });
 
-	} catch (err: any) {
+	} catch (err: unknown) {
 		console.error("Error deleting category:", err);
 		return NextResponse.json({ error: err.message, message: "Error deleting category" }, { status: 500 });
 	}

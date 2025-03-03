@@ -47,7 +47,7 @@ const Admin = () => {
 			const res = await axios.delete(`/api/subcategory/`, { data: { id } });
 			getSubCategory();
 			toast.success(res.data.message);
-		} catch (err: any) {
+		} catch (err: unknown) {
 			toast.error(err.response.data.message);
 		}
 	}
@@ -70,7 +70,7 @@ const Admin = () => {
 			setFormCategory("");
 			setFormOpen(false);
 			getSubCategory();
-		} catch (err: any) {
+		} catch (err: unknown) {
 			toast.error(err.response?.data?.message || "An error occurred.");
 		}
 	}

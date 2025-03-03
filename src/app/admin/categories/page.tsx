@@ -58,7 +58,7 @@ const Admin = () => {
 			});
 			toast.success("Category deleted successfully");
 			getCategory();
-		} catch (err: any) {
+		} catch (err) {
 			toast.error(
 				err.response?.data?.message || "Error deleting category"
 			);
@@ -82,7 +82,7 @@ const Admin = () => {
 			toast.success("Category updated successfully");
 			setEditFormOpen(false);
 			getCategory();
-		} catch (err: any) {
+		} catch (err) {
 			toast.error(
 				err.response?.data?.message || "Error updating category"
 			);
@@ -103,7 +103,7 @@ const Admin = () => {
 			setUploadedImageUrl("");
 			setFormOpen(false);
 			getCategory();
-		} catch (err: any) {
+		} catch (err:unknown) {
 			toast.error(err.response?.data?.message || "An error occurred.");
 		}
 	}
