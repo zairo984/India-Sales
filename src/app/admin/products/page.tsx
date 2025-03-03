@@ -23,8 +23,6 @@ interface SubCategory {
 }
 
 const Admin = () => {
-	
-
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 	const [formOpen, setFormOpen] = useState(false);
 	const [subCategory, setSubCategory] = useState("");
@@ -40,7 +38,9 @@ const Admin = () => {
 	const [category, setCategory] = useState("");
 	const [formCategory, setFormCategory] = useState([]);
 	const [formSubCategory, setFormSubCategory] = useState({});
-	const [formSubCategoryList, setFormSubCategoryList] = useState<SubCategory[]>([]);
+	const [formSubCategoryList, setFormSubCategoryList] = useState<
+		SubCategory[]
+	>([]);
 	const [loading, setLoading] = useState(true);
 
 	async function getProduct() {
@@ -69,8 +69,12 @@ const Admin = () => {
 			const res = await axios.delete(`/api/products/`, { data: { id } });
 			toast.success(res.data.message);
 			getProduct();
-		} catch (err) {
-			toast.error(err.response.data.message);
+		} catch (err: unknown) {
+			const errorMessage =
+				err instanceof Error
+					? err.message
+					: "An unknown error occurred";
+			toast.error(errorMessage);
 		}
 	}
 
@@ -84,8 +88,8 @@ const Admin = () => {
 	useEffect(() => {
 		if (category && Array.isArray(subArray)) {
 			const subNames = subArray
-				.filter((sub:SubCategory) => sub.category === category)
-				.map((sub:{name:string}) => sub.name);
+				.filter((sub: SubCategory) => sub.category === category)
+				.map((sub: SubCategory) => sub.name);
 			setFormSubCategoryList(subNames);
 		} else {
 			setFormSubCategoryList([]);
@@ -107,13 +111,15 @@ const Admin = () => {
 				},
 				{ headers: { "Content-Type": "application/json" } }
 			);
-			console.log(name,
+			console.log(
+				name,
 				description,
 				uploadedImageUrl,
 				price,
 				quantity,
 				category,
-				subCategory,)
+				subCategory
+			);
 			toast.success(res.data.message);
 			setName("");
 			setDescription("");
@@ -123,8 +129,12 @@ const Admin = () => {
 			setPrice("");
 			setFormOpen(false);
 			getProduct();
-		} catch (err) {
-			toast.error(err.response?.data?.message || "An unexpected error occurred.");
+		} catch (err: unknown) {
+			const errorMessage =
+				err instanceof Error
+					? err.message
+					: "An unknown error occurred";
+			toast.error(errorMessage);
 		}
 	}
 
@@ -133,9 +143,17 @@ const Admin = () => {
 			<ToastContainer />
 			<Sidebar open={isSidebarOpen} setOpen={setIsSidebarOpen} />
 
-			<div className={`transition-all duration-300 p-6 flex-1 ${isSidebarOpen ? "ml-[250px] w-[calc(100%-250px)]" : "ml-2 w-full"}`}>
+			<div
+				className={`transition-all duration-300 p-6 flex-1 ${
+					isSidebarOpen
+						? "ml-[250px] w-[calc(100%-250px)]"
+						: "ml-2 w-full"
+				}`}
+			>
 				<header className="bg-white shadow-md rounded-lg p-4 flex justify-between items-center sticky top-0 z-10">
-					<h1 className="text-xl lg:text-3xl  font-bold text-gray-700">Admin Dashboard</h1>
+					<h1 className="text-xl lg:text-3xl  font-bold text-gray-700">
+						Admin Dashboard
+					</h1>
 					<Button
 						onClick={() => setFormOpen(true)}
 						className="flex text-sm lg:text-xl items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md transition"
@@ -152,25 +170,50 @@ const Admin = () => {
 						</div>
 					) : product?.length ? (
 						product.map((item, index) => (
-							<motion.div key={index} whileHover={{ scale: 1.05 }} className="w-[300px] p-4">
+							<motion.div
+								key={index}
+								whileHover={{ scale: 1.05 }}
+								className="w-[300px] p-4"
+							>
 								<Card className="shadow-lg border h-[400px] border-gray-200 bg-white rounded-lg">
 									{/* Image */}
 									<div className="w-full h-[200px] bg-gray-100 flex items-center justify-center rounded-t-lg overflow-hidden">
-										<img src={item.imageUrl || "https://via.placeholder.com/300"} alt={item.name} className="w-full h-full object-cover" />
+										<img
+											src={
+												item.imageUrl ||
+												"https://via.placeholder.com/300"
+											}
+											alt={item.name}
+											className="w-full h-full object-cover"
+										/>
 									</div>
 
 									{/* Content */}
 									<CardHeader className="p-4">
-										<CardTitle className="text-lg font-semibold text-gray-800">{item.name}</CardTitle>
-										<CardContent className="text-sm text-gray-600">{item.description}</CardContent>
+										<CardTitle className="text-lg font-semibold text-gray-800">
+											{item.name}
+										</CardTitle>
+										<CardContent className="text-sm text-gray-600">
+											{item.description}
+										</CardContent>
 									</CardHeader>
 
 									{/* Footer Buttons */}
 									<CardFooter className="p-4 flex justify-between">
-										<Button className="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-md" onClick={() => deleteProduct(item.id)}>
+										<Button
+											className="bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-md"
+											onClick={() =>
+												deleteProduct(item.id)
+											}
+										>
 											<FiTrash2 />
 										</Button>
-										<Button className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded-md" onClick={() => window.location.href = `products/${item.id}`}>
+										<Button
+											className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded-md"
+											onClick={() =>
+												(window.location.href = `products/${item.id}`)
+											}
+										>
 											<FiEye />
 										</Button>
 									</CardFooter>
@@ -178,7 +221,9 @@ const Admin = () => {
 							</motion.div>
 						))
 					) : (
-						<p className="text-gray-500 text-center text-lg">No products available</p>
+						<p className="text-gray-500 text-center text-lg">
+							No products available
+						</p>
 					)}
 				</div>
 			</div>

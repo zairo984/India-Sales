@@ -32,27 +32,28 @@ export async function GET() {
 			{ status: 200 }
 		);
 	} catch (err: unknown) {
-		const error = new Error(err);
+		const error = new Error((err as Error).toString());
 		return NextResponse.json({ error: error.message }, { status: 500 });
 	}
 }
 
 export async function POST(req: NextRequest) {
-	try{
+	try {
 		const body = await req.json();
-		if(await Category.findOne({name:body.name})){
-			return NextResponse.json({message:"Category already exists"},{status:400})
-		}
-		else{
+		if (await Category.findOne({ name: body.name })) {
+			return NextResponse.json(
+				{ message: "Category already exists" },
+				{ status: 400 }
+			);
+		} else {
 			const category = await Category.create(body);
-			console.log(category)
-			return NextResponse.json({message:"success"},{status:200})
+			console.log(category);
+			return NextResponse.json({ message: "success" }, { status: 200 });
 		}
 		// console.log(category)
-		
-	}catch(err){
-		console.log(err)
-		return NextResponse.json({error:err},{status:500})
+	} catch (err) {
+		console.log(err);
+		return NextResponse.json({ error: err }, { status: 500 });
 	}
 }
 
@@ -66,57 +67,62 @@ export async function DELETE(req: NextRequest) {
 
 		// If category not found, return 404
 		if (!category) {
-			return NextResponse.json({ message: "Category not found" }, { status: 404 });
+			return NextResponse.json(
+				{ message: "Category not found" },
+				{ status: 404 }
+			);
 		}
 
 		// Delete related subcategories and products
 		await SubCategory.deleteMany({ category: category.name });
 		await Product.deleteMany({ category: category.name });
 
-		return NextResponse.json({ message: "Category and related products deleted successfully" }, { status: 200 });
-
+		return NextResponse.json(
+			{ message: "Category and related products deleted successfully" },
+			{ status: 200 }
+		);
 	} catch (err: unknown) {
-		console.error("Error deleting category:", err);
-		return NextResponse.json({ error: err.message, message: "Error deleting category" }, { status: 500 });
+		const error = new Error((err as Error).toString());
+		return NextResponse.json({ error: error.message }, { status: 500 });
 	}
 }
 
 export async function PUT(req: Request) {
-    try {
-        await connectDB(); // Ensure DB connection
+	try {
+		await connectDB(); // Ensure DB connection
 
-        const { id, name, description, imageUrl } = await req.json();
+		const { id, name, description, imageUrl } = await req.json();
 
-        if (!id || !name || !description) {
-            return NextResponse.json(
-                { message: "Missing required fields" },
-                { status: 400 }
-            );
-        }
+		if (!id || !name || !description) {
+			return NextResponse.json(
+				{ message: "Missing required fields" },
+				{ status: 400 }
+			);
+		}
 
-        const category = await Category.findById(id);
-        if (!category) {
-            return NextResponse.json(
-                { message: "Category not found" },
-                { status: 404 }
-            );
-        }
+		const category = await Category.findById(id);
+		if (!category) {
+			return NextResponse.json(
+				{ message: "Category not found" },
+				{ status: 404 }
+			);
+		}
 
-        category.name = name;
-        category.description = description;
-        if (imageUrl) category.imageUrl = imageUrl; // Update only if provided
+		category.name = name;
+		category.description = description;
+		if (imageUrl) category.imageUrl = imageUrl; // Update only if provided
 
-        await category.save();
+		await category.save();
 
-        return NextResponse.json(
-            { message: "Category updated successfully", category },
-            { status: 200 }
-        );
-    } catch (error) {
-        console.error("Error updating category:", error);
-        return NextResponse.json(
-            { message: "Internal Server Error" },
-            { status: 500 }
-        );
-    }
+		return NextResponse.json(
+			{ message: "Category updated successfully", category },
+			{ status: 200 }
+		);
+	} catch (error) {
+		console.error("Error updating category:", error);
+		return NextResponse.json(
+			{ message: "Internal Server Error" },
+			{ status: 500 }
+		);
+	}
 }

@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 import Product from "@/models/products";
 
-
 export async function GET() {
 	try {
 		const product = await Product.find();
@@ -21,8 +20,9 @@ export async function GET() {
 		}));
 
 		return NextResponse.json({ products: productArray }, { status: 200 });
-	} catch (err: unknown) {
-		const error = new Error(err);
+	} catch (err) {
+		// const error = new Error(err);
+		const error = new Error((err as Error).message);
 		return NextResponse.json({ error: error.message }, { status: 500 });
 	}
 }
@@ -50,7 +50,7 @@ export async function DELETE(req: NextRequest) {
 		const body = await req.json();
 		const id = body.id;
 		const product = await Product.findByIdAndDelete(id);
-		console.log(product)
+		console.log(product);
 		return NextResponse.json({ message: "success" }, { status: 200 });
 	} catch (err) {
 		console.log(err);

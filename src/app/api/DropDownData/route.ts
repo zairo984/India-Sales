@@ -1,4 +1,4 @@
-import {  NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 import { connectDB } from "@/lib/db";
 import Category from "@/models/categories";
@@ -23,7 +23,7 @@ export async function GET() {
 			{ status: 200 }
 		);
 	} catch (err: unknown) {
-		const error = new Error(err);
+		const error = new Error((err as Error).toString());
 		return NextResponse.json({ error: error.message }, { status: 500 });
 	}
 }

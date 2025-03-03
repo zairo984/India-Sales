@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-
 const Admin = () => {
 	interface Category {
 		id: string;
@@ -36,7 +35,9 @@ const Admin = () => {
 	const [uploadedImageUrl, setUploadedImageUrl] = useState("");
 	const [loading, setLoading] = useState(true);
 	const [editFormOpen, setEditFormOpen] = useState(false);
-	const [selectedCategory, setSelectedCategory] = useState<Category|null>(null);
+	const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+		null
+	);
 
 	/*************  ✨ Fetch Categories *************/
 	async function getCategory() {
@@ -58,10 +59,12 @@ const Admin = () => {
 			});
 			toast.success("Category deleted successfully");
 			getCategory();
-		} catch (err:unknown) {
-			toast.error(
-				err.response?.data?.message || "Error deleting category"
-			);
+		} catch (err: unknown) {
+			const errorMessage =
+				err instanceof Error
+					? err.message
+					: "An unknown error occurred";
+			toast.error(errorMessage);
 		}
 	}
 
@@ -75,17 +78,16 @@ const Admin = () => {
 	async function EditCategory(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
 		try {
-			await axios.put(
-				`/api/categories/`,
-				selectedCategory
-			);
+			await axios.put(`/api/categories/`, selectedCategory);
 			toast.success("Category updated successfully");
 			setEditFormOpen(false);
 			getCategory();
-		} catch (err:unknown) {
-			toast.error(
-				err.response?.data?.message || "Error updating category"
-			);
+		} catch (err: unknown) {
+			const errorMessage =
+				err instanceof Error
+					? err.message
+					: "An unknown error occurred";
+			toast.error(errorMessage);
 		}
 	}
 
@@ -103,8 +105,12 @@ const Admin = () => {
 			setUploadedImageUrl("");
 			setFormOpen(false);
 			getCategory();
-		} catch (err:unknown) {
-			toast.error(err.response?.data?.message || "An error occurred.");
+		} catch (err: unknown) {
+			const errorMessage =
+				err instanceof Error
+					? err.message
+					: "An unknown error occurred";
+			toast.error(errorMessage);
 		}
 	}
 
