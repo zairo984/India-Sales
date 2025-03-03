@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 			html,
 		};
 
-		const info = await transporter.sendMail(mailOptions);
+		await transporter.sendMail(mailOptions);
 		// console.log("Email sent:", info.response);
 
 		return NextResponse.json({ success: true, message: "Email sent successfully" });

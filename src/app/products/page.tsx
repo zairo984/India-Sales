@@ -45,7 +45,7 @@ const ProductsPage = () => {
 
 			<div className="flex flex-wrap gap-6 justify-center p-6">
 				{products.map((item) => (
-					<Card key ={item.id} className="w-full shadow-md border border-gray-300 bg-white rounded-lg">
+					<Card key ={item.id} className="w-full sm:w-1/3 lg:w-1/4 shadow-md border border-gray-300 bg-white rounded-lg">
 					{/* Image Section */}
 					<div className="w-full h-[250px] bg-gray-100 flex items-center justify-center overflow-hidden">
 						<img

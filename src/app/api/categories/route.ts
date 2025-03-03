@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
 				{ status: 400 }
 			);
 		} else {
-			const category = await Category.create(body);
+			await Category.create(body);
 			// console.log(category);
 			return NextResponse.json({ message: "success" }, { status: 200 });
 		}

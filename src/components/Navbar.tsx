@@ -46,11 +46,11 @@ const Navbar = () => {
 		<nav className="w-full bg-white shadow-md">
 			<div className="container mx-auto flex items-center justify-between p-4">
 				{/* Logo */}
-				<div>
+				<div onClick={()=>{window.location.href="/"}}>
 					<img
 						src="/images/logo.jpg"
 						alt="Logo"
-						className="h-10 w-28"
+						className="h-16 w-30"
 					/>
 				</div>
 

@@ -36,7 +36,7 @@ export async function POST(req: NextRequest) {
 				{ status: 400 }
 			);
 		}
-		const category = await Product.create(body);
+		await Product.create(body);
 		// console.log(category);
 		return NextResponse.json({ message: "success" }, { status: 200 });
 	} catch (err) {
@@ -49,7 +49,7 @@ export async function DELETE(req: NextRequest) {
 		// console.log(req);
 		const body = await req.json();
 		const id = body.id;
-		const product = await Product.findByIdAndDelete(id);
+		await Product.findByIdAndDelete(id);
 		// console.log(product);
 		return NextResponse.json({ message: "success" }, { status: 200 });
 	} catch (err) {
