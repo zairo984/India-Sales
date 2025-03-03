@@ -1,7 +1,7 @@
 "use client";
 
 
-import Recommendation from "@/components/Recommendation";
+
 
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -62,7 +62,6 @@ const Categories = () => {
 				))}
 			</div>
 
-			<Recommendation />
 		</div>
 	);
 };

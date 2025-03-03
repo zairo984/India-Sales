@@ -1,8 +1,6 @@
 "use client";
 
 
-import Recommendation from "@/components/Recommendation";
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
@@ -80,7 +78,7 @@ const Product = () => {
 				))}
 			</div>
 
-			<Recommendation />
+
 		</div>
 	);
 };
