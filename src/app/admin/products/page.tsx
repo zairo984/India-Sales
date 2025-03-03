@@ -87,14 +87,13 @@ const Admin = () => {
 
 	useEffect(() => {
 		if (category && Array.isArray(subArray)) {
-			const subNames = subArray
-				.filter((sub: SubCategory) => sub.category === category)
-				.map((sub: SubCategory) => sub.name);
-			setFormSubCategoryList(subNames);
+		  const filteredSubCategories = subArray
+			.filter((sub: SubCategory) => sub.category === category);
+		  setFormSubCategoryList(filteredSubCategories);
 		} else {
-			setFormSubCategoryList([]);
+		  setFormSubCategoryList([]);
 		}
-	}, [category]);
+	  }, [category]);
 
 	async function createSubCategory() {
 		try {
@@ -267,8 +266,8 @@ const Admin = () => {
 							>
 								<option value="">-- Select Category --</option>
 								{formSubCategoryList?.map((item, index) => (
-									<option key={index} value={item}>
-										{item}
+									<option key={index} value={item.name}>
+										{item.name}
 									</option>
 								))}
 							</select>
