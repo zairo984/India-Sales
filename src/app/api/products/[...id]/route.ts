@@ -10,9 +10,9 @@ export async function GET(req: NextRequest) {
 		const urlPath = req.nextUrl.pathname.split("/");
 
 		const id = urlPath[urlPath.length - 1];
-		// console.log("id in backend: ", id);
+		console.log("id in backend: ", id);
 		if (!mongoose.Types.ObjectId.isValid(id)) {
-			return NextResponse.json(
+			return NextResponse.json( 
 				{ error: "Invalid product ID" },
 				{ status: 400 }
 			);
