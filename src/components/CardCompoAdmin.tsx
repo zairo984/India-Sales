@@ -7,7 +7,7 @@ import {
 	CardTitle,
 } from "./ui/card";
 import { Button } from "./ui/button";
-
+import { FaWhatsapp } from "react-icons/fa";
 
 type CardProps = {
 	title: string;
@@ -36,12 +36,20 @@ const AdminCard: React.FC<CardProps> = ({
 	// 		console.error("Error fetching product:", err);
 	// 	}
 	// };
+	function handleEnquiry(productName: string) {
+		const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
+		const message = encodeURIComponent(
+			`Hi, I am interested in "${productName}". Can you share more details?`
+		);
+		const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+		window.open(whatsappURL, "_blank");
+	}
 
 	return (
 		<div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-			<Card className="w-full shadow-md border border-gray-300 bg-white rounded-lg">
+			<Card className="group relative  m-2  overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl">
 				{/* Image Section */}
-				<div className="w-full h-[250px] bg-gray-100 flex items-center justify-center overflow-hidden">
+				<div className="w-full h-[250px]  flex items-center justify-center overflow-hidden">
 					<img
 						src={imageUrl || "https://via.placeholder.com/300"}
 						alt={title}
@@ -60,7 +68,7 @@ const AdminCard: React.FC<CardProps> = ({
 				</CardHeader>
 
 				{/* Card Footer */}
-				<CardFooter className="p-4 flex justify-end">
+				<CardFooter className="p-4 justify-center opacity-0 translate-y-5 group-hover:opacity-100 group-hover:-translate-y-5 transition-all gap-2 duration-500">
 					<Button
 						className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
 						onClick={() => {
@@ -68,6 +76,14 @@ const AdminCard: React.FC<CardProps> = ({
 						}} // ✅ Pass id directly
 					>
 						View Details
+					</Button>
+					<Button
+						onClick={() =>
+							handleEnquiry(title)
+						}
+						className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
+					>
+						Enquire <FaWhatsapp />
 					</Button>
 				</CardFooter>
 			</Card>

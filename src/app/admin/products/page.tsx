@@ -227,7 +227,7 @@ const Admin = () => {
 				</div>
 			</div>
 			{formOpen && (
-				<div className="fixed inset-0 flex z-50 items-center justify-center bg-black bg-opacity-50">
+				<div className="fixed inset-0 flex z-50 items-center justify-center overflow-y-auto bg-black bg-opacity-50">
 					<div className="bg-white p-6 rounded-lg shadow-lg w-96">
 						<h2 className="text-xl font-bold mb-4">
 							Add New Category

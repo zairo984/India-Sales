@@ -43,7 +43,7 @@ const Navbar = () => {
 	}
 
 	return (
-		<nav className="w-full bg-white shadow-md">
+		<nav className="w-full relative bg-black text-white z-50 shadow-md">
 			<div className="container mx-auto flex items-center justify-between p-4">
 				{/* Logo */}
 				<div onClick={()=>{window.location.href="/"}}>
@@ -74,13 +74,13 @@ const Navbar = () => {
 
 							{/* Dropdown */}
 							{navItem === "Categories" && isDropdownOpen && (
-								<div ref={dropdownRef} className="absolute left-0 mt-2 w-56 bg-white shadow-lg rounded-lg border p-2 z-20">
+								<div ref={dropdownRef} className="absolute left-0 mt-2 w-56 bg-black shadow-lg rounded-lg border p-2 z-20">
 									{categories?.map((category, index) => (
 										<div key={index} className="relative group">
 											<Link
 												href={`/products/${category.toLowerCase()}`}
 												// Prevent navigation
-												className="flex justify-between items-center px-4 py-2 hover:bg-gray-200 cursor-pointer"
+												className="flex justify-between items-center px-4 py-2 hover:bg-slate-900 cursor-pointer"
 												onMouseEnter={() => setActiveCategory(category)}
 												
 											>
@@ -89,14 +89,14 @@ const Navbar = () => {
 											</Link>
 
 											{activeCategory === category && (
-												<div className="absolute left-full top-0 w-48 bg-white shadow-lg rounded-lg border p-2 ">
+												<div className="absolute left-full top-0 w-48 bg-black shadow-lg rounded-lg border p-2 ">
 													{subCategories
 														.filter((sub) => sub.category === category)
 														.map((subCategory) => (
 															<Link
 																key={subCategory.name}
 																href={`/products/${category}/${subCategory?.name.toLowerCase()}`}
-																className="block px-4 py-2 hover:bg-gray-200"
+																className="block px-4 py-2 hover:bg-gray-900"
 																
 															>
 																{subCategory.name}

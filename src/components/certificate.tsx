@@ -37,7 +37,7 @@ const Certificates: React.FC = () => {
 	}, []);
 
 	return (
-		<div className="w-full max-w-7xl mx-auto p-6">
+		<div className="w-screen max-w-7xl mx-auto my-8 p-6">
 			<h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
 				Our Certificates
 			</h2>
@@ -49,19 +49,19 @@ const Certificates: React.FC = () => {
 			) : certificates.length > 0 ? (
 				<div className="relative">
 					<Carousel
-						plugins={[
-							Autoplay({
-								delay: 2500,
-								stopOnInteraction: true,
-							}),
-						]}
-						className="w-full"
+						// plugins={[
+						// 	Autoplay({
+						// 		delay: 2500,
+						// 		stopOnInteraction: true,
+						// 	}),
+						// ]}
+						className="relative"
 					>
-						<CarouselContent className="flex gap-6">
+						<CarouselContent className="flex gap-6 relative">
 							{certificates.map((cert, index) => (
 								<CarouselItem
 									key={index}
-									className="flex justify-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
+									className="flex justify-center w-full md:basis-1/2 lg:basis-1/3"
 								>
 									<div
 										className="bg-white shadow-lg rounded-lg p-4 text-center cursor-pointer"

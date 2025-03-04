@@ -10,7 +10,7 @@ import {
 	CardTitle,
 } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
-
+import { FaWhatsapp } from "react-icons/fa";
 
 interface Product {
 	id: string;
@@ -21,6 +21,16 @@ interface Product {
 	price: number;
 	quantity: number;
 	imageUrl: string;
+}
+
+
+function handleEnquiry(productName: string, price: number) {
+	const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
+	const message = encodeURIComponent(
+		`Hi, I am interested in "${productName}" priced at $${price}. Can you share more details?`
+	);
+	const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+	window.open(whatsappURL, "_blank");
 }
 
 const ProductsPage = () => {
@@ -42,41 +52,54 @@ const ProductsPage = () => {
 
 	return (
 		<div>
-
-			<div className="flex flex-wrap gap-6 justify-center p-6">
+			<div className="flex flex-wrap gap-6  justify-center p-6">
 				{products.map((item) => (
-					<Card key ={item.id} className="w-full sm:w-1/3 lg:w-1/4 shadow-md border border-gray-300 bg-white rounded-lg">
-					{/* Image Section */}
-					<div className="w-full h-[250px] bg-gray-100 flex items-center justify-center overflow-hidden">
-						<img
-							src={item.imageUrl || "https://via.placeholder.com/300"}
-							alt={item.name}
-							className="w-full h-auto max-h-full object-contain"
-						/>
-					</div>
-	
-					{/* Card Content */}
-					<CardHeader className="p-4">
-						<CardTitle className="text-lg font-semibold text-gray-800">
-							{item.name}
-						</CardTitle>
-						<CardContent className="text-sm text-gray-600 line-clamp-2">
-							{item.description}
-						</CardContent>
-					</CardHeader>
-	
-					{/* Card Footer */}
-					<CardFooter className="p-4 flex justify-end">
-						<Button
-							className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
-							onClick={() => {
-								window.location.href = `products/${item.category}/${item.subCategory}/${item.id}`;
-							}} // ✅ Pass id directly
-						>
-							View Details
-						</Button>
-					</CardFooter>
-				</Card>
+					<Card
+						key={item.id}
+						className="group relative  m-2  overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl"
+					>
+						{/* Image Section */}
+						<div className="w-full h-[250px]  flex items-center justify-center overflow-hidden">
+							<img
+								src={
+									item.imageUrl ||
+									"https://via.placeholder.com/300"
+								}
+								alt={item.name}
+								className="w-full h-auto max-h-full object-contain"
+							/>
+						</div>
+
+						{/* Card Content */}
+						<CardHeader className="p-4">
+							<CardTitle className="text-lg font-semibold text-gray-800">
+								{item.name}
+							</CardTitle>
+							<CardContent className="text-sm text-gray-600 line-clamp-2">
+								{item.description}
+							</CardContent>
+						</CardHeader>
+
+						{/* Card Footer */}
+						<CardFooter className="p-4 justify-center opacity-0 translate-y-5 group-hover:opacity-100 group-hover:-translate-y-5 transition-all gap-2 duration-500">
+							<Button
+								className="hover:bg-yellow-500 bg-white text-black px-4 py-2 rounded-md"
+								onClick={() => {
+									window.location.href = `products/${item.category}/${item.subCategory}/${item.id}`;
+								}} // ✅ Pass id directly
+							>
+								View Details
+							</Button>
+							<Button
+								onClick={() =>
+									handleEnquiry(item.name, item.price)
+								}
+								className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
+							>
+								Enquire <FaWhatsapp />
+							</Button>
+						</CardFooter>
+					</Card>
 				))}
 			</div>
 		</div>
