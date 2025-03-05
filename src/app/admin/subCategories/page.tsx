@@ -177,7 +177,7 @@ const Admin = () => {
 				<div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex items-center justify-center">
 					<div className="bg-white p-6 rounded-lg shadow-lg w-96">
 						<h2 className="text-xl font-bold mb-4">
-							Add New Category
+							Add New SubCategory
 						</h2>
 						<form
 							onSubmit={(e) => {

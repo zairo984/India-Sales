@@ -9,7 +9,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+// import Autoplay from "embla-carousel-autoplay";
 import Loader from "@/components/Loader";
 import { Dialog } from "@headlessui/react";
 

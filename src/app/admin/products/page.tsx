@@ -230,7 +230,7 @@ const Admin = () => {
 				<div className="fixed inset-0 flex z-50 items-center justify-center overflow-y-auto bg-black bg-opacity-50">
 					<div className="bg-white p-6 rounded-lg shadow-lg w-96">
 						<h2 className="text-xl font-bold mb-4">
-							Add New Category
+							Add New Products
 						</h2>
 						<form
 							onSubmit={(e) => {
@@ -240,7 +240,7 @@ const Admin = () => {
 						>
 							<input
 								type="text"
-								placeholder="Category Name"
+								placeholder="Product Name"
 								value={name}
 								onChange={(e) => setName(e.target.value)}
 								className="w-full border p-2 rounded mb-3"
@@ -264,7 +264,7 @@ const Admin = () => {
 								className="w-full border p-2 rounded mb-3"
 								onChange={(e) => setSubCategory(e.target.value)}
 							>
-								<option value="">-- Select Category --</option>
+								<option value="">-- Select SubCategory --</option>
 								{formSubCategoryList?.map((item, index) => (
 									<option key={index} value={item.name}>
 										{item.name}
@@ -280,7 +280,7 @@ const Admin = () => {
 							/>
 							<input
 								type="text"
-								placeholder="quantity"
+								placeholder="Quantity"
 								value={quantity}
 								onChange={(e) => {
 									// console.log(e.target.value)
@@ -290,7 +290,7 @@ const Admin = () => {
 							/>
 							<input
 								type="text"
-								placeholder="price"
+								placeholder="Price"
 								value={price}
 								onChange={(e) => setPrice(e.target.value)}
 								className="w-full border p-2 rounded mb-3"
