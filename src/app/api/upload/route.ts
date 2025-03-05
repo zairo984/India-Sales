@@ -1,47 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
-import path from "path";
-import fs from "fs/promises";
+import axios from "axios";
 
-export const runtime = "nodejs"; // ✅ Force Next.js to use Node.js runtime
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // Store in .env
+const REPO_OWNER = "zairo984"; // Your GitHub username
+const REPO_NAME = "India-Sales"; // Your repo name
+const BRANCH = "main"; // Change if needed
 
 export async function POST(req: NextRequest) {
-	try {
-		// ✅ Parse FormData properly
-		const formData = await req.formData();
-		const file = formData.get("image") as File; // Get the uploaded file
+  try {
+    const { fileName, fileContent } = await req.json();
 
-		// ❌ Validate File
-		if (!file) {
-			return NextResponse.json(
-				{ error: "No file uploaded" },
-				{ status: 400 }
-			);
-		}
+    // Ensure filename is safe
+    const safeFileName = `${Date.now()}-${fileName.replace(/\s+/g, "-")}`;
+    const filePath = `uploads/${safeFileName}`; // GitHub file path
 
-		// ✅ Convert file to Buffer
-		const bytes = await file.arrayBuffer(); // Convert to raw bytes
-		const buffer = Buffer.from(bytes); // Convert bytes to Buffer
+    // Upload to GitHub
+    const response = await axios.put(
+      `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`,
+      {
+        message: "Upload image via API",
+        content: fileContent, // Base64 content
+        branch: BRANCH,
+      },
+      {
+        headers: {
+          Authorization: `token ${GITHUB_TOKEN}`,
+          Accept: "application/vnd.github.v3+json",
+        },
+      }
+    );
 
-		// ✅ Ensure Upload Directory Exists
-		const uploadDir = path.join(process.cwd(), "public", "uploads");
-		await fs.mkdir(uploadDir, { recursive: true }); // Create folder if missing
+    // Generate the public image URL
+    const imageUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${filePath}`;
 
-		// ✅ Generate Unique File Name
-		const filename = `${Date.now()}-${file.name.replace(/\s+/g, "-")}`;
-		const filePath = path.join(uploadDir, filename); // Full path
-
-		// ✅ Save File to Disk
-		await fs.writeFile(filePath, buffer);
-
-		// ✅ Return Uploaded Image URL
-		return NextResponse.json({
-			imageUrl: `/uploads/${filename}`,
-		});
-	} catch (error) {
-		console.error("Error uploading image:", error);
-		return NextResponse.json(
-			{ error: "Internal Server Error" },
-			{ status: 500 }
-		);
-	}
+    return NextResponse.json({ status: 200, message: "Image uploaded!", imageUrl });
+  } catch (error: any) {
+    console.error("GitHub upload error:", error.response?.data || error.message);
+    return NextResponse.json({ status: 500, message: "Error uploading image" });
+  }
 }
