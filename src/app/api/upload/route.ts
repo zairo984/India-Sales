@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     const filePath = `uploads/${safeFileName}`; // GitHub file path
 
     // Upload to GitHub
-    const response = await axios.put(
+    await axios.put(
       `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`,
       {
         message: "Upload image via API",
@@ -34,8 +34,8 @@ export async function POST(req: NextRequest) {
     const imageUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${filePath}`;
 
     return NextResponse.json({ status: 200, message: "Image uploaded!", imageUrl });
-  } catch (error: any) {
-    console.error("GitHub upload error:", error.response?.data || error.message);
-    return NextResponse.json({ status: 500, message: "Error uploading image" });
-  }
+  } catch (err: unknown) {
+	const error = new Error((err as Error).toString());
+	return NextResponse.json({ error: error.message }, { status: 500 });
+}
 }
