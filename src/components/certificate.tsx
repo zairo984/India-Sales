@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import {
@@ -49,12 +48,7 @@ const Certificates: React.FC = () => {
 			) : certificates.length > 0 ? (
 				<div className="relative">
 					<Carousel
-						// plugins={[
-						// 	Autoplay({
-						// 		delay: 2500,
-						// 		stopOnInteraction: true,
-						// 	}),
-						// ]}
+						
 						className="relative"
 					>
 						<CarouselContent className="flex gap-6 relative">

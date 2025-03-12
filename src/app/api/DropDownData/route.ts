@@ -8,11 +8,12 @@ connectDB();
 
 export async function GET() {
 	try {
+		console.log("aa rha hai andar ahhhh")
 		const categories = await Category.find();
 		const categoriesArray = categories.map((category) => category.name);
 
 		const subCategories = await SubCategory.find();
-		// console.log("subCategories: ", subCategories);
+		console.log("subCategories: ", subCategories);
 		const subCategoriesArray = subCategories.map((subCategory) => ({
 			name: subCategory.name,
 			category: subCategory.category,

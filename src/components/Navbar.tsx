@@ -44,7 +44,7 @@ const Navbar = () => {
 
 	return (
 		<nav className="w-full relative bg-black text-white z-50 shadow-md">
-			<div className="container mx-auto flex items-center justify-between p-4">
+			<div className="container mx-auto flex items-center justify-between ">
 				{/* Logo */}
 				<div onClick={()=>{window.location.href="/"}}>
 					<img
@@ -113,10 +113,7 @@ const Navbar = () => {
 
 				</div>
 
-				{/* Search Button */}
-				<div>
-					<Search className="cursor-pointer" />
-				</div>
+				
 
 				{/* Mobile Menu Button */}
 				<button
@@ -182,7 +179,6 @@ const Navbar = () => {
 					))}
 				</motion.div>
 			)}
-
 		</nav>
 	);
 };

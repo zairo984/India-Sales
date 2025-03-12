@@ -30,9 +30,9 @@ const Sidebar = ({ open, setOpen }: { open: boolean; setOpen: (value: boolean) =
 
         {/* Navigation Links */}
         <div className="flex flex-col gap-5 justify-center">
-          <Link className="text-white border-b-2 w-[80%] hover:bg-red-400 p-2 mx-auto" href="/admin">
+          {/* <Link className="text-white border-b-2 w-[80%] hover:bg-red-400 p-2 mx-auto" href="/admin">
             Home
-          </Link>
+          </Link> */}
           <Link className="text-white border-b-2 w-[80%] hover:bg-red-400 p-2 mx-auto" href="/admin/categories">
             Categories
           </Link>
