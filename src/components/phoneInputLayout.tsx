@@ -43,7 +43,7 @@ const PhoneInputLayout: React.ForwardRefExoticComponent<PhoneInputProps> =
            *
            * @param {E164Number | undefined} value - The entered value
            */
-          // @ts-ignore
+          // @ts-expect-error
           onChange={(value) => onChange?.(value || "")}
           {...props}
         />
