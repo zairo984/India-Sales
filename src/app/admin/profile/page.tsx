@@ -32,13 +32,13 @@ const CertificationUpload = () => {
     }
 
     const formData = new FormData();
-    console.log("certName: ", certName, uploadedImageUrl);
+    // console.log("certName: ", certName, uploadedImageUrl);
     formData.append("certName", certName);
     formData.append("file", uploadedImageUrl);
 
     setLoading(true);
     try {
-      console.log("formData: ", formData);
+      // console.log("formData: ", formData);
       const res = await axios.post("/api/certificates", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
