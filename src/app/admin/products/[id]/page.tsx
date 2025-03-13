@@ -40,7 +40,7 @@ const Admin = () => {
 	// console.log("category", category);
 
 	return (
-		<div className="flex">
+		<div className="flex bg-slate-900">
 			{/* Sidebar */}
 			<Sidebar open={isSidebarOpen} setOpen={setIsSidebarOpen} />
 

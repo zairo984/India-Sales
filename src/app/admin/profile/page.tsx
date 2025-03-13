@@ -57,7 +57,7 @@ const CertificationUpload = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-6">
       <Sidebar open={isSidebarOpen} setOpen={setIsSidebarOpen} />
       <ToastContainer />
       <div className="bg-white p-6 rounded-lg  shadow-md w-96">

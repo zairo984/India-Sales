@@ -119,7 +119,7 @@ const Admin = () => {
 	}, []);
 
 	return (
-		<div className="flex min-h-screen bg-gray-100">
+		<div className="flex min-h-screen bg-gray-900">
 			<ToastContainer className={"z-50"} />
 			<Sidebar open={isSidebarOpen} setOpen={setIsSidebarOpen} />
 

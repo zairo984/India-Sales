@@ -1,4 +1,4 @@
-import { ShoppingBag } from "lucide-react";
+
 import {
 	Card,
 	CardDescription,
@@ -14,55 +14,25 @@ import {
 	CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "./ui/button";
-import Image from "next/image";
+
 import Certificates from "./certificate";
 import Footer from "./Footer";
+import HeroCarousel from "./HeroCarousal";
 
 const Hero = () => {
 
 	return (
 		<div className="absolute top-0 overflow-hidden">
-			<div className="relative">
-			<Image
-				src="/pexels-krisof-2674905.jpg"
-				width={1920}
-				height={1080}
-				alt="Horse Image"
-				className="w-screen h-screen top-0 object-cover opacity-90"
-			></Image>
-			{/* <video
-				src="/videos/horse-video-2.mp4"
-				autoPlay
-				muted
-				loop
-				className={`h-full w-screen object-cover ${
-				  fadedImage && "opacity-70"
-				}`}
-
-			></video> */}
-
-			{/* <img
-				src="/images/horse-img.jpg"
-				alt="bg-image"
-				className=" w-screen h-screen md:hidden"
-			/> */}
-
-			<Button
-				variant={"secondary"}
-				className=" absolute bottom-28 left-1/2 -translate-x-1/2 py-6 px-8 rounded-3xl"
-				onClick={() => {
-					window.location.href = "/products";
-				}}
-			>
-				Products <ShoppingBag />{" "}
-			</Button>
+			
+			<div>
+				<HeroCarousel />
 			</div>
 
-			<div className="flex flex-col pt-10 pb-10 text-center w-screen bg-gradient-to-b from-slate-100 to-white">
-				<h3 className="text-base font-thin font-sans">
+			<div className="flex flex-col pt-10 pb-10 text-center w-screen ">
+				<h3 className="text-base font-thin font-sans text-white">
 					FAVOURITES FROM EVERY CATEGORIES
 				</h3>
-				<h2 className="text-5xl font-extrabold ">Best Sellers</h2>
+				<h2 className="text-5xl font-extrabold text-white">Best Sellers</h2>
 				<div>
 					<Carousel className="relative w-screen pt-4 overflow-x-hidden">
 						<CarouselContent className=" w-screen">

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, ChevronRight, Search, Menu, X } from "lucide-react";
+import { ChevronDown, ChevronRight,  Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { usePathname } from "next/navigation";
@@ -44,7 +44,7 @@ const Navbar = () => {
 
 	return (
 		<nav className="w-full relative bg-black text-white z-50 shadow-md">
-			<div className="container mx-auto flex items-center justify-between ">
+			<div className="container p-2 flex items-center justify-between ">
 				{/* Logo */}
 				<div onClick={()=>{window.location.href="/"}}>
 					<img
