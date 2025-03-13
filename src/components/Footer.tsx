@@ -16,13 +16,13 @@ const Footer = () => {
         {/* Section 2: Quick Links */}
         <div className="flex space-x-3">
           <Link
-            href="/horse"
+            href="/products/horse"
             className="text-gray-400 hover:text-white transition-all"
           >
             Horse
           </Link>
           <Link
-            href="/rider"
+            href="/products/rider"
             className="text-gray-400 hover:text-white transition-all"
           >
             Rider

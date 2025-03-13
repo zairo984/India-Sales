@@ -20,7 +20,7 @@ const AdminCard: React.FC<CardProps> = ({
 	title,
 	description,
 	imageUrl,
-	id,
+	
 }) => {
 	// const handleOnClick = async (id: string | undefined) => {
 	// 	if (!id) {
@@ -37,7 +37,7 @@ const AdminCard: React.FC<CardProps> = ({
 	// 	}
 	// };
 	function handleEnquiry(productName: string) {
-		const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
+		const phoneNumber = "+91 8009005768"; // Replace with actual WhatsApp number
 		const message = encodeURIComponent(
 			`Hi, I am interested in "${productName}". Can you share more details?`
 		);
@@ -69,14 +69,14 @@ const AdminCard: React.FC<CardProps> = ({
 
 				{/* Card Footer */}
 				<CardFooter className="p-4 justify-center opacity-0 translate-y-5 group-hover:opacity-100 group-hover:-translate-y-5 transition-all gap-2 duration-500">
-					<Button
+					{/* <Button
 						className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
 						onClick={() => {
 							window.location.href = `products/${id}`;
 						}} // ✅ Pass id directly
 					>
 						View Details
-					</Button>
+					</Button> */}
 					<Button
 						onClick={() =>
 							handleEnquiry(title)
