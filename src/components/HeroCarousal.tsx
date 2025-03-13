@@ -7,9 +7,11 @@ import { Button } from "@/components/ui/button"
 import { ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react"
 
 const images = [
-  "/pexels-krisof-2674905.jpg",
-  "/rider.jpg",
-  "/main_horse.jpg",
+  "/web1.jpg",
+  "/web2.jpg",
+  "/web5.jpg",
+  "/web4.jpg",
+  "/web6.jpg",
 ]
 
 export default function HeroCarousel() {
@@ -52,8 +54,8 @@ export default function HeroCarousel() {
                   opacity: isActive ? 1 : 0.5, // Fade inactive images slightly
                 }}
                 transition={{
-                  duration: 1, 
-                  ease: "easeInOut",
+                  // duration: 0.5, 
+                  ease: "easeIn",
                 }}
               >
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl">
