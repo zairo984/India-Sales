@@ -52,7 +52,7 @@ const PhoneInputLayout: React.ForwardRefExoticComponent<PhoneInputProps> =
   );
 PhoneInputLayout.displayName = "PhoneInput";
 
-const InputComponent = React.forwardRef<HTMLInputElement, any>(
+const InputComponent = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
   ({ className, ...props }, ref) => (
     <input
       className={cn(

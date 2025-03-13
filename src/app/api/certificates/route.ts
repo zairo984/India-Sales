@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Certification from "@/models/certificates";
-import { writeFile } from "fs/promises";
-import path from "path";
-import fs from "fs";
+
 
 // Connect to MongoDB
 connectDB();

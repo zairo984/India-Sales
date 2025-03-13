@@ -36,7 +36,7 @@ export default function HeroCarousel() {
         <div className="relative flex items-center justify-center w-full max-w-7xl">
           {images.map((src, index) => {
             const position = (((index - activeIndex) % images.length) + images.length) % images.length
-            let adjustedPosition = position > images.length / 2 ? position - images.length : position
+            const adjustedPosition = position > images.length / 2 ? position - images.length : position
             const isActive = index === activeIndex
 
             return (
