@@ -46,7 +46,7 @@ export default function AboutPage() {
 				<h2 className="text-2xl font-semibold  mb-4">📞 Contact Us</h2>
 				<p className="">
 					Have questions or need recommendations? Reach out to us at{" "}
-					<strong>support@indiasales.com</strong> or call us at **+91 98765 43210**.
+					<strong>faraz@indiasales.co</strong> or call us at +91 8009005768.
 				</p>
 			</div>
 

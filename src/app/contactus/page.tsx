@@ -62,16 +62,16 @@ export default function Contact() {
           <p className="text-gray-700 font-medium">
             📧 Email:{" "}
             <a
-              href="mailto:support@example.com"
+              href="mailto:faraz@indiasales.co"
               className="text-blue-600 hover:underline"
             >
-              support@example.com
+              faraz@indiasales.co
             </a>
           </p>
           <p className="text-gray-700 font-medium">
             📞 Phone:{" "}
             <a href="tel:+1234567890" className="text-blue-600 hover:underline">
-              +1 (234) 567-890
+            +91 8009005768
             </a>
           </p>
         </div>
