@@ -10,12 +10,12 @@ const Admin = () => {
   const router = useRouter();
 
 	useEffect(() => {
-		if (typeof window !== "undefined") {
+
 			const token = localStorage.getItem("IndiaSalestoken");
 			if (!token) {
 				router.push("/signin");
 			}
-		}
+		
 	}, [router]); 
 
   return (
