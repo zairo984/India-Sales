@@ -20,6 +20,7 @@ const AdminCard: React.FC<CardProps> = ({
 	title,
 	description,
 	imageUrl,
+	id
 	
 }) => {
 	// const handleOnClick = async (id: string | undefined) => {
@@ -69,14 +70,14 @@ const AdminCard: React.FC<CardProps> = ({
 
 				{/* Card Footer */}
 				<CardFooter className="p-4 justify-center opacity-0 translate-y-5 group-hover:opacity-100 group-hover:-translate-y-5 transition-all gap-2 duration-500">
-					{/* <Button
+					<Button
 						className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
 						onClick={() => {
 							window.location.href = `products/${id}`;
 						}} // ✅ Pass id directly
 					>
 						View Details
-					</Button> */}
+					</Button>
 					<Button
 						onClick={() =>
 							handleEnquiry(title)
