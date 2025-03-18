@@ -10,6 +10,18 @@ const images = ["/web1.jpg", "/web2.jpg", "/web5.jpg", "/web4.jpg", "/web6.jpg"]
 
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(1024); // Default width for SSR
+
+  useEffect(() => {
+    // Set window width on mount
+    setWindowWidth(window.innerWidth);
+
+    // Update width on resize
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,7 +52,7 @@ export default function HeroCarousel() {
                 key={`image-${index}`}
                 className="absolute transition-all duration-700"
                 animate={{
-                  x: adjustedPosition * (window.innerWidth < 768 ? 250 : 400), // Responsive spacing
+                  x: adjustedPosition * (windowWidth < 768 ? 250 : 400), // Fixed window reference
                   scale: isActive ? 1.2 : 0.85,
                   zIndex: isActive ? 10 : 10 - Math.abs(adjustedPosition),
                   filter: isActive ? "brightness(100%)" : "brightness(40%)",
@@ -97,7 +109,11 @@ export default function HeroCarousel() {
       <Button
         variant="secondary"
         className="absolute bottom-12 left-1/2 -translate-x-1/2 py-4 px-8 sm:py-5 sm:px-10 rounded-full text-base sm:text-lg font-semibold shadow-xl bg-white text-black hover:bg-gray-200 transition z-20"
-        onClick={() => (window.location.href = "/products")}
+        onClick={() => {
+          if (typeof window !== "undefined") {
+            window.location.href = "/products";
+          }
+        }}
       >
         Explore Products <ShoppingBag className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
       </Button>
