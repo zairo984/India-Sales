@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Certification from "@/models/certificates";
 
-
 // Connect to MongoDB
 connectDB();
 
@@ -12,10 +11,7 @@ export async function GET() {
     return NextResponse.json(certifications, { status: 200 });
   } catch (error) {
     console.error("Fetch error:", error);
-    return NextResponse.json(
-      { message: "Error fetching data" },
-      { status: 500 }
-    );
+    return NextResponse.json({ message: "Error fetching data" }, { status: 500 });
   }
 }
 
@@ -23,27 +19,16 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
     const certName = formData.get("certName") as string;
-    const file = formData.get("file") as File;
-    console.log("certName and file: ", certName, file);
+    const fileUrl = formData.get("file") as string; // Getting the image URL from the frontend
 
-    if (!certName || !file) {
+    if (!certName || !fileUrl) {
       return NextResponse.json({ message: "Missing fields" }, { status: 400 });
     }
 
-    // Ensure upload directory existss
-    // const uploadDir = path.join(process.cwd(), "public/uploads");
-    // if (!fs.existsSync(uploadDir)) {
-    //   fs.mkdirSync(uploadDir, { recursive: true });
-    // }
-
-    // // Save the file
-    // const filePath = path.join(uploadDir, file.name);
-    // await writeFile(filePath, Buffer.from(await file.arrayBuffer()));
-
-    // Save file details in MongoDB
+    // Save data in MongoDB
     const newCert = await Certification.create({
       certName,
-      fileUrl: file, // This is relative to the public directory
+      fileUrl, // Directly store the image URL
     });
 
     return NextResponse.json(

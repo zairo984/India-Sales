@@ -96,7 +96,7 @@ const Certificates: React.FC = () => {
 				<Dialog
 					open={!!selectedImage}
 					onClose={() => setSelectedImage(null)}
-					className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50"
+					className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-50 h-screen/2"
 				>
 					<div className="relative bg-white rounded-lg shadow-lg p-4 max-w-3xl w-full">
 						<button
@@ -108,7 +108,7 @@ const Certificates: React.FC = () => {
 						<img
 							src={selectedImage}
 							alt="Certificate"
-							className="w-full h-auto rounded-lg"
+							className="w-full h-[50%] rounded-lg"
 						/>
 					</div>
 				</Dialog>
