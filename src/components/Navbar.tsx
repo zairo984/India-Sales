@@ -50,12 +50,12 @@ const Navbar = () => {
 					<img
 						src="/images/logo.jpg"
 						alt="Logo"
-						className="h-16 w-30"
+						className="h-24 w-30  lg:pl-16"
 					/>
 				</div>
 
 				{/* Desktop Menu */}
-				<div className="hidden md:flex gap-x-6">
+				<div className="hidden md:flex gap-x-10 lg:mr-32">
 					{["Home", "Categories", "AboutUs", "ContactUs"].map((navItem, index) => (
 						<div key={index} className="relative group">
 							<Link
@@ -130,7 +130,7 @@ const Navbar = () => {
 					initial={{ opacity: 0, y: -10 }}
 					animate={{ opacity: 1, y: 0 }}
 					exit={{ opacity: 0, y: -10 }}
-					className="md:hidden bg-white p-4 shadow-lg absolute top-16 left-0 w-full z-30 rounded-lg"
+					className="md:hidden bg-white p-4 shadow-lg absolute top-16 right-0 z-30 rounded-lg"
 				>
 					{["Home", "Categories", "AboutUs", "ContactUs"].map((navItem, index) => (
 						<div key={index} className="py-3 border-b last:border-none">
