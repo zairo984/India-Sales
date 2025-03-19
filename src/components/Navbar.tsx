@@ -50,7 +50,7 @@ const Navbar = () => {
 					<img
 						src="/images/logo.jpg"
 						alt="Logo"
-						className="h-24 w-30  lg:pl-16"
+						className="h-20 w-30  lg:pl-16"
 					/>
 				</div>
 

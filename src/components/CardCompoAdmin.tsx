@@ -40,13 +40,17 @@ const AdminCard: React.FC<CardProps> = ({
 	// 	}
 	// };
 	function handleEnquiry(productName: string) {
-		const phoneNumber = "+91 8009005768"; // Replace with actual WhatsApp number
+		const phoneNumber = "918009005768"; // No "+" or spaces
 		const message = encodeURIComponent(
-			`Hi, I am interested in "${productName}". Can you share more details?`
+		  `Hi, I am interested in "${productName}". Can you share more details?`
 		);
 		const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-		window.open(whatsappURL, "_blank");
-	}
+	  
+		if (typeof window !== "undefined") {
+		  window.open(whatsappURL, "_blank", "noopener,noreferrer");
+		}
+	  }
+	  
 
 	return (
 		<div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4">

@@ -26,13 +26,19 @@ export default function Home() {
 	const id = params?.id;
 
 	function handleEnquiry(productName: string) {
-		const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
+		const phoneNumber = "918009005768"; // No "+" or spaces
 		const message = encodeURIComponent(
-			`Hi, I am interested in "${productName}". Can you share more details?`
+		  `Hi, I am interested in "${productName}". Can you share more details?`
 		);
 		const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-		window.open(whatsappURL, "_blank");
-	}
+	  
+		if (typeof window !== "undefined") {
+		  window.open(whatsappURL, "_blank", "noopener,noreferrer");
+		}
+	  }
+	  
+	  
+	  
 
 	async function getProducts() {
 		if (!id) return;
