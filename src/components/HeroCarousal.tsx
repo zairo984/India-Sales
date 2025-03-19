@@ -99,9 +99,9 @@ export default function HeroCarousel() {
              w-screen h-screen 
     
              sm:w-[500px] sm:h-[350px] 
-             md:w-[600px] md:h-[450px] 
-             lg:w-[800px] lg:h-[500px] 
-             xl:w-[900px] xl:h-[500px] 
+             md:w-[600px] md:h-[400px] 
+             lg:w-[700px] lg:h-[400px] 
+             xl:w-[950px] xl:h-[450px] 
 
              max-w-full aspect-[4/3]"
 									/>
@@ -134,7 +134,7 @@ export default function HeroCarousel() {
 			{/* CTA Button */}
 			<Button
 				variant="secondary"
-				className="absolute bottom-32 sm:bottom-28 lg:bottom-16 left-1/2 -translate-x-1/2 py-4 px-8 sm:py-5 sm:px-10 rounded-full text-base sm:text-lg font-semibold shadow-xl bg-white text-black hover:bg-gray-200 transition z-20"
+				className="absolute bottom-28 sm:bottom-20 lg:bottom-8 left-1/2 -translate-x-1/2 py-4 px-8 sm:py-5 sm:px-10 rounded-full text-base sm:text-lg font-semibold shadow-xl bg-white text-black hover:bg-gray-200 transition z-20"
 				onClick={() => {
 					if (typeof window !== "undefined") {
 						window.location.href = "/products";
