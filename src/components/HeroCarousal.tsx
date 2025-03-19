@@ -101,7 +101,7 @@ export default function HeroCarousel() {
              sm:w-[500px] sm:h-[350px] 
              md:w-[600px] md:h-[450px] 
              lg:w-[800px] lg:h-[500px] 
-             xl:w-[900px] xl:h-[600px] 
+             xl:w-[900px] xl:h-[500px] 
 
              max-w-full aspect-[4/3]"
 									/>
