@@ -16,7 +16,7 @@ const Hero = () => {
 
 		
 
-			<div className=" flex flex-wrap mt-3 w-full text-center items-center justify-center">
+			<div className=" flex flex-wrap w-full text-center items-center justify-center">
 				<div
 					style={{ backgroundImage: "url('/main_horse.jpg')" }}
 					className="bg-cover w-[100%] sm:w-[50%] bg-center h-[800px]  text-white flex flex-col items-center justify-center"
