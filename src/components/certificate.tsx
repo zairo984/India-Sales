@@ -56,7 +56,7 @@ const Certificates: React.FC = () => {
 									className="flex justify-center w-full md:basis-1/2 lg:basis-1/3"
 								>
 									<div
-										className="bg-white shadow-lg rounded-lg p-4 min-w-80 h-auto text-center cursor-pointer transition-all duration-300 hover:scale-105"
+										className="bg-white shadow-lg rounded-lg  h-auto text-center cursor-pointer transition-all duration-300 hover:scale-105"
 										onClick={() =>
 											setSelectedImage(cert.fileUrl)
 										}
@@ -70,11 +70,11 @@ const Certificates: React.FC = () => {
 										<img
 											src={cert.fileUrl}
 											alt={`Certificate: ${cert.certName}`}
-											className="w-full h-64 object-cover rounded-lg mb-3"
+											className="w-full h-64 object-contain rounded-lg "
 										/>
-										<h3 className="text-lg font-semibold text-gray-800">
+										{/* <h3 className="text-lg font-semibold text-gray-800">
 											{cert.certName}
-										</h3>
+										</h3> */}
 									</div>
 								</CarouselItem>
 							))}

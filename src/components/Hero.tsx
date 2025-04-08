@@ -21,7 +21,7 @@ const Hero = () => {
 					style={{ backgroundImage: "url('/main_horse.jpg')" }}
 					className="bg-cover w-[100%] sm:w-[50%] bg-center h-[800px]  text-white flex flex-col items-center justify-center"
 				>
-					<h1 className="text-2xl font-bold ">Trending</h1>
+					{/* <h1 className="text-2xl font-bold ">Trending</h1> */}
 					<h1 className="text-5xl font-extrabold">All Products</h1>
 					<p className=" xl font-light w-[70%] lg:w-[60%] ">
 						Discover top-quality products designed to enhance the
@@ -40,7 +40,7 @@ const Hero = () => {
 						style={{ backgroundImage: "url('/horse2.jpg')" }}
 						className="bg-cover bg-center h-[400px] w-full  text-white flex flex-col items-center justify-center"
 					>
-						<h1 className="text-2xl font-bold ">Trending</h1>
+						{/* <h1 className="text-2xl font-bold ">Trending</h1> */}
 						<h1 className="text-5xl font-extrabold">Horses</h1>
 						<p className=" xl font-light w-[70%] lg:w-[60%] ">
 							Give your horse the best care and comfort with our
@@ -62,7 +62,7 @@ const Hero = () => {
 						style={{ backgroundImage: "url('/rider.jpg')" }}
 						className="bg-cover bg-center h-[400px] w-full  text-white flex flex-col items-center justify-center"
 					>
-						<h1 className="text-2xl font-bold ">Trending</h1>
+						{/* <h1 className="text-2xl font-bold ">Trending</h1> */}
 						<h1 className="text-5xl font-extrabold">Riders</h1>
 						<p className=" xl font-light w-[70%] lg:w-[60%] ">
 							Ride with confidence and style using our premium

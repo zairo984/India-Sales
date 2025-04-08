@@ -22,7 +22,7 @@ const productSchema = new Schema<Product>(
     subCategory: { type: String },
   },
   { timestamps: true }
-);
+);    
 
 // ✅ FIX: Prevent re-compiling the model
 const Product = models.Product || model<Product>("Product", productSchema);
