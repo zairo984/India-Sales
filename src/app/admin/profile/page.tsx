@@ -27,8 +27,8 @@ const CertificationUpload = () => {
     try {
       // Send only certName and file URL (not as a file)
       const res = await axios.post("/api/certificates", {
-        certName,
-        fileUrl: uploadedImageUrl, // Use fileUrl instead of appending as FormData
+        certName:certName as string,
+        fileUrl: uploadedImageUrl as string, // Use fileUrl instead of appending as FormData
       });
 
       toast.success(res.data.message);

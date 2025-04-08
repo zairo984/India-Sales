@@ -17,9 +17,11 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
-    const formData = await req.formData();
-    const certName = formData.get("certName") as string;
-    const fileUrl = formData.get("file") as string; // Getting the image URL from the frontend
+    const body = await req.json();
+    console.log(body)
+const certName = body.certName as string;
+const fileUrl = body.fileUrl;
+ // Getting the image URL from the frontend
 
     if (!certName || !fileUrl) {
       return NextResponse.json({ message: "Missing fields" }, { status: 400 });

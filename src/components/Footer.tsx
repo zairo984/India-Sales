@@ -1,12 +1,12 @@
 "use client";
 
-import { Facebook, Instagram, Twitter } from "lucide-react";
+// import { Facebook, Instagram, Twitter } from "lucide-react";
 import Link from "next/link";
 
 const Footer = () => {
 	return (
 		<footer className="bg-black  text-white py-2 flex flex-col items-center">
-			<div className="border-b border-gray-700 mb-4 flex justify-between items-center w-[95%]  text-gray-500 text-sm">
+			{/* <div className="border-b border-gray-700 mb-4 flex justify-between items-center w-[95%]  text-gray-500 text-sm">
 			<div className="" onClick={()=>{window.location.href="/"}}>
 					<img
 						src="/images/logo.jpg"
@@ -40,8 +40,131 @@ const Footer = () => {
 						</Link>
 					</div>
 				</div>
+			</div> */}
+			
+			<div className="container border-t border-gray-700 pt-4 mx-auto flex flex-col md:flex-row justify-between ">
+				
+			<div className="space-y-2 w-[40%]">
+			<div className="" onClick={()=>{window.location.href="/"}}>
+					<img
+						src="/images/logo.jpg"
+						alt="Logo"
+						className="h-20 w-30 "
+					/>
 			</div>
-			<div className="container mx-auto flex flex-col md:flex-row justify-between ">
+					<p className="text-sm pl-2 text-gray-400 leading-relaxed">
+					India Sales, the company known for its value addition, is operating in the Manchester of the East since 1989. A dedicated group from Kanpur, India, with a simple goal of offering the best assortment of Equestrian products, we believe in integrating advance technology to manufacture finest quality of our products....
+						<Link
+							href="/aboutus"
+							className="text-blue-400 hover:text-white transition-all underline ml-1"
+						>
+							Read More
+						</Link>
+					</p>
+				</div>
+				
+				
+
+				{/* Quick Links: Horse */}
+				{/* <div className="space-y-2 px-4">
+					<h3 className="text-xl font-semibold">Horse</h3>
+					<ul className="space-y-4">
+						<li>
+							<Link
+								href="/products/Horse/fly%20mask"
+								className="hover:text-blue-400 transition-all"
+							>
+								Fly Mask
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/products/Horse/fly%20veil"
+								className="hover:text-blue-400 transition-all"
+							>
+								Fly Veil
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/products/horse"
+								className="hover:text-blue-400 transition-all"
+							>
+								More
+							</Link>
+						</li>
+					</ul>
+				</div> */}
+
+				{/* Quick Links: Rider */}
+				{/* <div className="space-y-2">
+					<h3 className="text-xl font-semibold">Rider</h3>
+					<ul className="space-y-4">
+						<li>
+							<Link
+								href="/products/Rider/breeches"
+								className="hover:text-blue-400 transition-all"
+							>
+								Breeches
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/products/Rider/riding%20tight"
+								className="hover:text-blue-400 transition-all"
+							>
+								Riding Tights
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/products/rider"
+								className="hover:text-blue-400 transition-all"
+							>
+								More
+							</Link>
+						</li>
+					</ul>
+				</div> */}
+
+				<div className="space-y-2">
+					<h3 className="text-xl font-semibold">Quick Links</h3>
+					<ul className="space-y-3">
+					<li>
+							<Link
+								href="/"
+								className="hover:text-blue-400 transition-all"
+							>
+								Home
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/aboutus"
+								className="hover:text-blue-400 transition-all"
+							>
+								About Us
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/contactus"
+								className="hover:text-blue-400 transition-all"
+							>
+								Contact Us
+							</Link>
+						</li>
+						<li>
+							<Link
+								href="/"
+								className="hover:text-blue-400 transition-all"
+							>
+								Certificates
+							</Link>
+						</li>
+					</ul>
+				</div>
+				{/* Social Media Links */}
 				{/* Contact Information */}
 				<div className="space-y-2 w-56">
 					<h3 className="text-2xl font-semibold text-white">
@@ -74,116 +197,9 @@ const Footer = () => {
 					</div>
 					
 				</div>
-				
-
-				{/* Quick Links: Horse */}
-				<div className="space-y-2 px-4">
-					<h3 className="text-xl font-semibold">Horse</h3>
-					<ul className="space-y-4">
-						<li>
-							<Link
-								href="/products/Horse/fly%20mask"
-								className="hover:text-blue-400 transition-all"
-							>
-								Fly Mask
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/products/Horse/fly%20veil"
-								className="hover:text-blue-400 transition-all"
-							>
-								Fly Veil
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/products/horse"
-								className="hover:text-blue-400 transition-all"
-							>
-								More
-							</Link>
-						</li>
-					</ul>
-				</div>
-
-				{/* Quick Links: Rider */}
-				<div className="space-y-2">
-					<h3 className="text-xl font-semibold">Rider</h3>
-					<ul className="space-y-4">
-						<li>
-							<Link
-								href="/products/Rider/breeches"
-								className="hover:text-blue-400 transition-all"
-							>
-								Breeches
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/products/Rider/riding%20tight"
-								className="hover:text-blue-400 transition-all"
-							>
-								Riding Tights
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/products/rider"
-								className="hover:text-blue-400 transition-all"
-							>
-								More
-							</Link>
-						</li>
-					</ul>
-				</div>
-
-				<div className="space-y-2">
-					<h3 className="text-xl font-semibold">Quick Links</h3>
-					<ul className="space-y-4">
-						<li>
-							<Link
-								href="/aboutus"
-								className="hover:text-blue-400 transition-all"
-							>
-								About Us
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/contactus"
-								className="hover:text-blue-400 transition-all"
-							>
-								Contact Us
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/"
-								className="hover:text-blue-400 transition-all"
-							>
-								Certificates
-							</Link>
-						</li>
-					</ul>
-				</div>
-				{/* Social Media Links */}
-				
 
 				
-				<div className="space-y-2 w-56">
-					<h2 className="text-3xl font-bold">IndiaSales</h2>
-					<p className="text-sm text-gray-400 leading-relaxed">
-						India Sales, the company known for its value addition,
-						is operating in the Manchester of the East since 1989...
-						<Link
-							href="/aboutus"
-							className="text-blue-400 hover:text-white transition-all underline ml-1"
-						>
-							Read More
-						</Link>
-					</p>
-				</div>
+				
 			</div>
 
 			{/* Bottom Bar */}

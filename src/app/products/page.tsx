@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import {
 	Card,
-	CardContent,
+	// CardContent,
 	CardFooter,
 	CardHeader,
 	CardTitle,
@@ -24,10 +24,10 @@ interface Product {
 }
 
 
-function handleEnquiry(productName: string, price: number) {
+function handleEnquiry(productName: string) {
 	const phoneNumber = "919876543210"; // Replace with actual WhatsApp number
 	const message = encodeURIComponent(
-		`Hi, I am interested in "${productName}" priced at $${price}. Can you share more details?`
+		`Hi, I am interested in "${productName}". Can you share more details?`
 	);
 	const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 	window.open(whatsappURL, "_blank");
@@ -72,16 +72,16 @@ const ProductsPage = () => {
 
 						{/* Card Content */}
 						<CardHeader className="p-4">
-							<CardTitle className="text-lg font-semibold text-gray-800">
+							<CardTitle className="text-lg text-center font-semibold text-gray-800">
 								{item.name}
 							</CardTitle>
-							<CardContent className="text-sm text-gray-600 line-clamp-2">
+							{/* <CardContent className="text-sm text-gray-600 line-clamp-2">
 								{item.description}
-							</CardContent>
+							</CardContent> */}
 						</CardHeader>
 
 						{/* Card Footer */}
-						<CardFooter className="p-4 justify-center opacity-0 translate-y-5 group-hover:opacity-100 group-hover:-translate-y-5 transition-all gap-2 duration-500">
+						<CardFooter className="p-4 justify-center  gap-2">
 							<Button
 								className="hover:bg-yellow-500 bg-white text-black px-4 py-2 rounded-md"
 								onClick={() => {
@@ -92,7 +92,7 @@ const ProductsPage = () => {
 							</Button>
 							<Button
 								onClick={() =>
-									handleEnquiry(item.name, item.price)
+									handleEnquiry(item.name)
 								}
 								className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
 							>

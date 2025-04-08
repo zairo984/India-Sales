@@ -66,16 +66,16 @@ const AdminCard: React.FC<CardProps> = ({
 
 				{/* Card Content */}
 				<CardHeader className="p-4">
-					<CardTitle className="text-lg font-semibold text-gray-800">
+					<CardTitle className="text-lg  text-center font-semibold text-gray-800">
 						{title}
 					</CardTitle>
-					<CardContent className="text-sm text-gray-600 line-clamp-2">
+					<CardContent className="text-sm text-gray-600 hidden line-clamp-2">
 						{description}
 					</CardContent>
 				</CardHeader>
 
 				{/* Card Footer */}
-				<CardFooter className="p-4 justify-center opacity-0 translate-y-5 group-hover:opacity-100 group-hover:-translate-y-5 transition-all gap-2 duration-500">
+				<CardFooter className="p-4 justify-center gap-2">
 					<Button
 						className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
 						onClick={() => {

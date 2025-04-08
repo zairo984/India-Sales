@@ -60,7 +60,7 @@ const Product = () => {
 
 	useEffect(() => {
 		fetchDropDownData();
-	}, [subCategory]);
+	}, []);
 
 
 	return (

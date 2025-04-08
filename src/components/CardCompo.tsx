@@ -22,8 +22,8 @@ const CardCompo: React.FC<CardProps> = ({
 	id,
 }) => {
 	return (
-		<div className="flex justify-center items-center w-full xs:w-1/2 sm:w-1/3 lg:w-1/4 p-4">
-			<Card className="w-full h-[400px] shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl flex flex-col">
+		<div className="w-[60%] lg:w-[30%]">
+			<Card className="w-full lg:w-[80%] h-[400px] shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl flex flex-col ">
 				{/* Image Section */}
 				<div className="w-full h-[250px]  flex items-center justify-center overflow-hidden">
 					<img
@@ -34,23 +34,23 @@ const CardCompo: React.FC<CardProps> = ({
 				</div>
 
 				{/* Card Content */}
-				<CardHeader className="p-4 flex-1 flex flex-col justify-between">
+				<CardHeader className=" flex flex-col items-center">
 					<CardTitle className="text-lg font-bold truncate">
-						{title}
+						{title.toUpperCase()}
 					</CardTitle>
-					<CardDescription className="text-sm text-gray-600 line-clamp-2">
+					<CardDescription className="text-sm hidden text-gray-600 ">
 						{description}
 						{id}
 					</CardDescription>
 				</CardHeader>
 
 				{/* Card Footer - Button */}
-				<CardFooter className="p-4 flex justify-end">
+				<CardFooter className="p-4 w-full flex justify-center">
 					<Button
 						onClick={() => {
 							window.location.href = `/products/categories/${title.toLowerCase()}`;
 						}}
-						className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
+						className="bg-blue-500 hover:bg-blue-600 w-full text-white px-4 py-2 rounded-md"
 					>
 						View More
 					</Button>

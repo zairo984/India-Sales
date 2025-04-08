@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button";
 import { ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
-	"/web1.jpg",
-	"/web2.jpg",
-	"/web5.jpg",
-	"/web4.jpg",
-	"/web6.jpg",
+	"/india_sales_01.jpg",
+	"/india_sales_02.jpg",
+	"/india_sales_03.jpg",
+	"/india_sales_04.jpg",
+	"/india_sales_05.jpg",
 ];
 
 export default function HeroCarousel() {

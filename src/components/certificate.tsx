@@ -37,9 +37,9 @@ const Certificates: React.FC = () => {
 	}, []);
 
 	return (
-		<div className="w-screen max-w-screen-2xl mx-auto my-8 p-6">
+		<div className="w-screen max-w-screen-2xl bg-black mx-auto my-8 p-6">
 			<h2 className="text-3xl font-bold text-center mb-6 text-white">
-				Our Certificates
+				OUR CERTIFICATES
 			</h2>
 
 			{loading ? (
@@ -53,7 +53,7 @@ const Certificates: React.FC = () => {
 							{certificates.map((cert, index) => (
 								<CarouselItem
 									key={index}
-									className="flex justify-center w-full md:basis-1/2 lg:basis-1/3"
+									className="flex justify-center w-full md:basis-1/2 lg:basis-1/4"
 								>
 									<div
 										className="bg-white shadow-lg rounded-lg  h-auto text-center cursor-pointer transition-all duration-300 hover:scale-105"

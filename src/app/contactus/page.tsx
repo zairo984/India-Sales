@@ -47,7 +47,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
       <ToastContainer />
       <div className="bg-white shadow-xl rounded-lg p-8 max-w-2xl w-full">
         <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
@@ -60,13 +60,16 @@ export default function Contact() {
         {/* Contact Info */}
         <div className="text-center mb-8 space-y-4">
           <p className="text-gray-700 font-medium">
-            📧 Email: <a href="mailto:faraz@indiasales.co" className="text-blue-600 hover:underline">faraz@indiasales.co</a>
+            📧 Email: <a href="mailto:faraz@indiasales.co" className=" hover:underline">faraz@indiasales.co</a>
           </p>
           <p className="text-gray-700 font-medium">
-            📞 Phone: <a href="tel:+918009005768" className="text-blue-600 hover:underline">+91 8009005768</a>
+            📞 Phone: <a href="tel:+918009005768" className=" hover:underline">+91 8009005768</a>
           </p>
           <p className="text-gray-700 font-medium">
-            🏢 Address: 40/120 Hospital Road, Parade, Kanpur - INDIA - 208001
+            🏢 Work Address: 18/1 A-1, Pokharpur, Jajmau, Kanpur - INDIA - 208010
+          </p>
+          <p className="text-gray-700 font-medium">
+            🏢 Head Office: 40/120 Hospital Road, Parade, Kanpur - INDIA - 208001
           </p>
         </div>
 

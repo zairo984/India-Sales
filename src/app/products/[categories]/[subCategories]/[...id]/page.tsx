@@ -54,7 +54,7 @@ export default function Home() {
 	// Fetch product details when the page loads
 	useEffect(() => {
 		getProducts();
-	}, [id]);
+	}, []);
 
 	const handleImageClick = () => {
 		setIsModalOpen(true);
@@ -65,7 +65,7 @@ export default function Home() {
 	};
 
 	return (
-		<div className="flex justify-center items-center min-h-screen bg-gray-100">
+		<div className="flex justify-center items-center min-h-screen">
 			<div className="m-3 p-6 bg-white shadow-lg rounded-lg w-full max-w-4xl">
 				<div className="flex h-20 bg-slate-400 justify-center items-center rounded-md">
 					<h1 className="text-xl font-semibold text-white">Product Details</h1>
@@ -88,12 +88,24 @@ export default function Home() {
 							<h2 className="text-2xl font-semibold text-gray-900">{category.name}</h2>
 							<p className="text-gray-600 text-lg mt-2">{category.description}</p>
 							<div className="mt-4 space-y-3">
+							<p className="text-lg">
+									<strong className="text-gray-800">Size:</strong> Customizable.
+								</p>
 								<p className="text-lg">
+									<strong className="text-gray-800">Color:</strong> All colors are available on request.
+								</p>
+								<p className="text-lg">
+									<strong className="text-gray-800">Customization:</strong> OEM Services are available
+								</p>
+								<p className="text-lg">
+									<strong className="text-gray-800">100% Customizable</strong> <span className="h-2 w-2 bg-black"></span>
+								</p>
+								{/* <p className="text-lg">
 									<strong className="text-gray-800">Category:</strong> {category.category}
 								</p>
 								<p className="text-lg">
 									<strong className="text-gray-800">Subcategory:</strong> {category.subCategory}
-								</p>
+								</p> */}
 								<Button
 									onClick={() => handleEnquiry(category.name)}
 									className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
