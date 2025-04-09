@@ -56,7 +56,7 @@ const ProductsPage = () => {
 				{products.map((item) => (
 					<Card
 						key={item.id}
-						className="group relative  m-2  overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl"
+						className="group relative w-full md:w-[25%]  m-2  overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl"
 					>
 						{/* Image Section */}
 						<div className="w-full h-[250px]  flex items-center justify-center overflow-hidden">

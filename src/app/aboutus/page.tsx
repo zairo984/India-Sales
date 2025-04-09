@@ -1,11 +1,11 @@
 
 // import { url } from "inspector";
 import Link from "next/link";
-import aboutus from "../../../public/aboutus.jpg"
+// import aboutus from "../../../public/aboutus.jpg"
 
 export default function AboutPage() {
 	return (
-		<div className="max-w-4xl text-xl mx-auto p-8 text-white bg-cover bg-center" style={{ backgroundImage: `url(${aboutus})` }}
+		<div className="max-w-4xl text-xl mx-auto p-8 text-white bg-cover bg-center" style={{ backgroundImage: "url('/aboutus.jpg')" }}
 >
 			<div className="">
 			<h1 className="text-4xl font-bold text-center text-white mb-6">
