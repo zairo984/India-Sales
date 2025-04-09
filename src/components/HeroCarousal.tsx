@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react"
+import { ShoppingBag, ChevronLeft, ChevronRight } from "lucide-react"    
 
 const images = [
 	"/india_sales_01.jpg",
