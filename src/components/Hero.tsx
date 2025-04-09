@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import Certificates from "./certificate";
 import Footer from "./Footer";
 import HeroCarousel from "./HeroCarousal";
-import { FaWhatsapp } from "react-icons/fa"
+import { FaWhatsapp } from "react-icons/fa";
 // import Link from "next/link";
 // import { Link2 } from "lucide-react";
 
@@ -27,11 +27,14 @@ const Hero = () => {
 				<HeroCarousel />
 			</div>
 			<div className="relative overflow-hidden">
-			<div className="sticky bottom-4 right-4 z-10">
-        <div onClick={() => handleEnquiry} className="bg-green-500 w-16 rounded-full flex justify-center items-center opacity-90 m-8 shadow-lg">
-          <FaWhatsapp className="text-white text-5xl m-2" />
-        </div>
-      </div>
+				<div className="fixed bottom-4 right-4 z-10">
+					<div
+						
+						className="bg-green-500 w-16 rounded-full  flex justify-center items-center opacity-70  m-8 shadow-lg shadow-green-400"
+					>
+						<FaWhatsapp onClick={ handleEnquiry} className="text-white text-5xl m-2" />
+					</div>
+				</div>
 
 				<div className=" flex flex-wrap w-full text-center items-center justify-center">
 					<div
