@@ -1,6 +1,6 @@
 
 // import { url } from "inspector";
-import Link from "next/link";
+import Link from "next/link"
 // import aboutus from "../../../public/aboutus.jpg"
 
 export default function AboutPage() {
