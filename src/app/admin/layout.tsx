@@ -29,10 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>IndiaSales</title>
+        {/* <title>IndiaSales</title> */}
         {/* <link rel="icon" href="/favicon.jpg" /> */}
         {/* You can use .png or .svg as well */}
-        <link rel="icon" type="image/png" href="/fevicon.png" />
+        {/* <link rel="icon" type="image/png" href="/fevicon.png" /> */}
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-800`}>
       {/* <Sidebar /> */}
