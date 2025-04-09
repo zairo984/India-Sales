@@ -187,7 +187,14 @@ const Footer = () => {
 						>
 							+91 8009005768
 						</a>
+						
 					</div>
+					<div className="flex items-center space-x-4 text-gray-400 text-sm"><span>📞</span>
+						<a
+							href="tel:+918009494503"
+							className=" hover:underline hover:text-green-400 ransition-all" >
+							+91 8009494503
+						</a></div>
 					<div className="flex items-start space-x-4 text-gray-400 text-sm">
 						<span>🏢</span>
 						<p>

@@ -65,6 +65,10 @@ export default function Contact() {
           <p className="text-gray-700 font-medium">
             📞 Phone: <a href="tel:+918009005768" className=" hover:underline">+91 8009005768</a>
           </p>
+          {/* <br /> */}
+          <p className="text-gray-700 font-medium">
+            📞 Phone: <a href="tel:+918009494503" className=" hover:underline">+91 8009494503</a>
+          </p>
           <p className="text-gray-700 font-medium">
             🏢 Work Address: 18/1 A-1, Pokharpur, Jajmau, Kanpur - INDIA - 208010
           </p>
