@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "India Sales",
-  icons:{
-    icon:"/fevicon.jpg",
-  },
+  // icons:{
+  //   icon:"/favicon.jpg",
+  // },
   description: "All products for horse and horse riders",
 };
 
@@ -33,7 +33,7 @@ export default function RootLayout({
         <title>IndiaSales</title>
         {/* <link rel="icon" href="/favicon.jpg" /> */}
         {/* You can use .png or .svg as well */}
-        <link rel="icon" type="image/png" href="/fevicon.png" />
+        {/* <link rel="icon" type="image/png" href="/fevicon.png" /> */}
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
       <Navbar />
