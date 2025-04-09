@@ -91,7 +91,7 @@ const Navbar = () => {
 											{activeCategory === category && (
 												<div className="absolute left-full top-0 w-48 bg-black shadow-lg rounded-lg border p-2 ">
 													{subCategories
-														.filter((sub) => sub.category === category)
+														.filter((sub) => sub.category === category).sort((a, b) => a.name.localeCompare(b.name))
 														.map((subCategory) => (
 															<Link
 																key={subCategory.name}
