@@ -27,9 +27,10 @@ export default function Contact() {
     e.preventDefault();
     setLoading(true);
 
+    
     // Combine phone number with form data
     const fullFormData = { ...formData, phoneNumber: phone };
-
+    console.log(fullFormData)
     try {
       const response = await axios.post("/api/contact", fullFormData);
       toast.success(response.data.message);

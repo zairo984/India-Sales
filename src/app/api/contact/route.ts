@@ -3,7 +3,12 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
 	try {
-		const { to, subject, text, html } = await req.json(); // ✅ Parse request body
+		// console.log(req.body);
+		const { email,message,name,phoneNumber } = await req.json(); // ✅ Parse request body
+		const to = process.env.RECEIVER_EMAIL;
+		const subject = "India Sales Contact Form";
+		const text = `Name: ${name}\nEmail: ${email}\nPhone Number: ${phoneNumber}\nMessage: ${message}`;
+		const html = `<p>Name: ${name}</p><p>Email: ${email}</p><p>Phone Number: ${phoneNumber}</p><p>Message: ${message}</p>`;
 
 		const transporter = nodemailer.createTransport({
 			service: "gmail",
