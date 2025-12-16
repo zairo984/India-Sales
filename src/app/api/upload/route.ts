@@ -30,8 +30,8 @@ export async function POST(req: NextRequest) {
       }
     );
 
-    // Generate the public image URL
-    const imageUrl = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${filePath}`;
+    // Generate the public image URL using jsDelivr CDN (more reliable than raw.githubusercontent.com)
+    const imageUrl = `https://cdn.jsdelivr.net/gh/${REPO_OWNER}/${REPO_NAME}@${BRANCH}/${filePath}`;
 
     return NextResponse.json({ status: 200, message: "Image uploaded!", imageUrl });
   } catch (err: unknown) {

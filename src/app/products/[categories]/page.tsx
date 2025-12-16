@@ -51,7 +51,7 @@ const Categories = () => {
 
 	if (isLoading) {
 		return (
-			<div className="min-h-screen flex items-center justify-center bg-gray-50">
+			<div className="min-h-screen flex items-center justify-center ">
 				<div className="text-center">
 					<Loader2 className="w-12 h-12 animate-spin text-yellow-500 mx-auto mb-4" />
 					<p className="text-gray-600">Loading {category} products...</p>
@@ -62,7 +62,7 @@ const Categories = () => {
 
 	if (error) {
 		return (
-			<div className="min-h-screen flex items-center justify-center bg-gray-50">
+			<div className="min-h-screen flex items-center justify-center ">
 				<div className="text-center">
 					<p className="text-red-500 mb-4">{error}</p>
 					<Button onClick={fetchDropDownData} className="bg-yellow-500 hover:bg-yellow-600">
@@ -74,9 +74,9 @@ const Categories = () => {
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-50">
+		<div className="min-h-screen ">
 			{/* Header */}
-			<div className="bg-gradient-to-r from-gray-900 to-black text-white py-12">
+			<div className="bg-gradient-to-r from-gray-900 to-black text-white ">
 				<div className="container mx-auto px-4">
 					<nav className="text-sm text-gray-400 mb-4" aria-label="Breadcrumb">
 						<ol className="flex items-center gap-2">

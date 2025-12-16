@@ -59,7 +59,7 @@ export default function HeroCarousel() {
   };
 
   return (
-    <div className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
+    <div className="relative w-full h-[calc(100vh-100px)] flex items-center justify-center overflow-hidden bg-black">
       {/* Subtle Vignette Effect */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-transparent to-black/60" />
 
@@ -140,7 +140,7 @@ export default function HeroCarousel() {
                     height={450}
                     priority={isActive}
                     className="object-contain sm:object-cover transition-all rounded-2xl 
-                     w-screen h-screen 
+                     w-[90vw] h-[60vh] 
                      sm:w-[500px] sm:h-[350px] 
                      md:w-[600px] md:h-[400px] 
                      lg:w-[700px] lg:h-[400px] 

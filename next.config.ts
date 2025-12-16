@@ -25,10 +25,16 @@ const nextConfig: NextConfig = {
         hostname: "raw.githubusercontent.com",
       },
       {
+        protocol: "https",
+        hostname: "cdn.jsdelivr.net",
+      },
+      {
         protocol: "http",
         hostname: "localhost",
       },
     ],
+    // Disable optimization for all images to avoid GitHub timeout issues
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],

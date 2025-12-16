@@ -60,7 +60,7 @@ const Product = () => {
 
 	if (isLoading) {
 		return (
-			<div className="min-h-screen flex items-center justify-center bg-gray-50">
+			<div className="min-h-screen flex items-center justify-center ">
 				<div className="text-center">
 					<Loader2 className="w-12 h-12 animate-spin text-yellow-500 mx-auto mb-4" />
 					<p className="text-gray-600">Loading {subCategory} products...</p>
@@ -71,7 +71,7 @@ const Product = () => {
 
 	if (error) {
 		return (
-			<div className="min-h-screen flex items-center justify-center bg-gray-50">
+			<div className="min-h-screen flex items-center justify-center ">
 				<div className="text-center">
 					<p className="text-red-500 mb-4">{error}</p>
 					<Button onClick={fetchProducts} className="bg-yellow-500 hover:bg-yellow-600">
@@ -83,9 +83,9 @@ const Product = () => {
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-50">
+		<div className="min-h-screen ">
 			{/* Header */}
-			<div className="bg-gradient-to-r from-gray-900 to-black text-white py-12">
+			<div className="bg-gradient-to-r from-gray-900 to-black text-white ">
 				<div className="container mx-auto px-4">
 					<nav className="text-sm text-gray-400 mb-4" aria-label="Breadcrumb">
 						<ol className="flex items-center gap-2 flex-wrap">
@@ -114,7 +114,7 @@ const Product = () => {
 			</div>
 
 			{/* Content */}
-			<div className="container mx-auto px-4 py-12">
+			<div className="container mx-auto px-4 py-4">
 				{products.length === 0 ? (
 					<div className="text-center py-12">
 						<Package className="w-16 h-16 text-gray-400 mx-auto mb-4" />

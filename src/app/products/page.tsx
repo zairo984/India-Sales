@@ -110,7 +110,7 @@ const ProductsPage = () => {
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-50">
+		<div className="min-h-screen ">
 			{/* Header Section */}
 			<div className="bg-black text-white py-12">
 				<div className="container mx-auto px-4">
@@ -184,7 +184,7 @@ const ProductsPage = () => {
 								className="group bg-white overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
 							>
 								{/* Image Section */}
-								<div className="relative w-full h-[220px] overflow-hidden bg-gray-100">
+								<div className="relative w-full h-[220px] overflow-hidden bg-white">
 									<Image
 										src={item.imageUrl || "/placeholder-product.jpg"}
 										alt={item.name}

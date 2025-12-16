@@ -43,7 +43,7 @@ const AdminCard: React.FC<CardProps> = ({
 	return (
 		<Card className="group bg-white overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
 			{/* Image Section */}
-			<div className="relative w-full h-[220px] overflow-hidden bg-gray-100">
+			<div className="relative w-full h-[220px] overflow-hidden bg-white">
 				<Image
 					src={imageUrl || "/placeholder-product.jpg"}
 					alt={title}
