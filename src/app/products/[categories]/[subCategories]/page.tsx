@@ -1,11 +1,12 @@
 "use client";
 
-
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "next/navigation";
 import { AdminCard } from "@/components/CardCompoAdmin";
-
+import { Loader2, Package } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface Products {
 	id: string;
@@ -19,67 +20,125 @@ interface Products {
 }
 
 const Product = () => {
-	const { subCategories } = useParams();
+	const { categories, subCategories } = useParams();
+	const category = decodeURIComponent(categories as string);
 	const subCategory = decodeURIComponent(subCategories as string);
-	// console.log(subCategory)
-	const [products, setproducts] = useState<Products[]>([]);
+	const [products, setProducts] = useState<Products[]>([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState<string | null>(null);
 
-	const fetchDropDownData = async () => {
+	const fetchProducts = useCallback(async () => {
 		try {
+			setIsLoading(true);
+			setError(null);
 			const res = await axios.get(`/api/subcategory/`);
-	
-			// Debugging the response
-			// console.log("API Response:", res.data);
-	
+
 			if (!res.data.products) {
-				console.error("Error: products key not found in API response");
+				setProducts([]);
 				return;
 			}
-	
-			// Ensure subCategory is valid
-			if (!subCategory || typeof subCategory !== "string") {
-				console.error("Error: subCategory is undefined or not a string");
-				return;
-			}
-	
-			// Filter the data safely
+
 			const filteredData = res.data.products.filter(
-				(item: Products) => item?.subCategory?.toLowerCase() === subCategory.toLowerCase()
+				(item: Products) =>
+					item?.subCategory?.toLowerCase() === subCategory.toLowerCase()
 			);
-	
-			// console.log("filteredData: ", filteredData);
-	
-			// Set filtered data to state
-			setproducts(filteredData);
-			// console.log("Updated products state: ", filteredData);
-		} catch (err: unknown) {
-			console.error("Error in fetching drop-down data: ", err);
+
+			setProducts(filteredData);
+		} catch (err) {
+			console.error("Error fetching products:", err);
+			setError("Failed to load products. Please try again.");
+		} finally {
+			setIsLoading(false);
 		}
-	};
-	
+	}, [subCategory]);
 
 	useEffect(() => {
-		fetchDropDownData();
-	}, []);
+		if (subCategory) {
+			fetchProducts();
+		}
+	}, [subCategory, fetchProducts]);
 
+	if (isLoading) {
+		return (
+			<div className="min-h-screen flex items-center justify-center bg-gray-50">
+				<div className="text-center">
+					<Loader2 className="w-12 h-12 animate-spin text-yellow-500 mx-auto mb-4" />
+					<p className="text-gray-600">Loading {subCategory} products...</p>
+				</div>
+			</div>
+		);
+	}
+
+	if (error) {
+		return (
+			<div className="min-h-screen flex items-center justify-center bg-gray-50">
+				<div className="text-center">
+					<p className="text-red-500 mb-4">{error}</p>
+					<Button onClick={fetchProducts} className="bg-yellow-500 hover:bg-yellow-600">
+						Try Again
+					</Button>
+				</div>
+			</div>
+		);
+	}
 
 	return (
-		<div>
-			<div className="flex flex-wrap gap-6 justify-center p-6">
-				{products.map((item, index) => (
-				<AdminCard
-
-						key={index}
-						title={item.name}
-						description={item.description}
-						imageUrl={item.imageUrl}
-						id = {item.id}
-					/>
-				))}
+		<div className="min-h-screen bg-gray-50">
+			{/* Header */}
+			<div className="bg-gradient-to-r from-gray-900 to-black text-white py-12">
+				<div className="container mx-auto px-4">
+					<nav className="text-sm text-gray-400 mb-4" aria-label="Breadcrumb">
+						<ol className="flex items-center gap-2 flex-wrap">
+							<li>
+								<Link href="/" className="hover:text-white">Home</Link>
+							</li>
+							<li>/</li>
+							<li>
+								<Link href="/products" className="hover:text-white">Products</Link>
+							</li>
+							<li>/</li>
+							<li>
+								<Link href={`/products/${category}`} className="hover:text-white capitalize">
+									{category}
+								</Link>
+							</li>
+							<li>/</li>
+							<li className="text-yellow-400 capitalize">{subCategory}</li>
+						</ol>
+					</nav>
+					<h1 className="text-4xl font-bold capitalize">{subCategory}</h1>
+					<p className="text-gray-300 mt-2">
+						{products.length} product{products.length !== 1 ? "s" : ""} available
+					</p>
+				</div>
 			</div>
 
-
+			{/* Content */}
+			<div className="container mx-auto px-4 py-12">
+				{products.length === 0 ? (
+					<div className="text-center py-12">
+						<Package className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+						<p className="text-gray-500 text-lg">No products found in {subCategory}.</p>
+						<Button asChild className="mt-4 bg-yellow-500 hover:bg-yellow-600">
+							<Link href={`/products/${category}`}>Browse {category}</Link>
+						</Button>
+					</div>
+				) : (
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+						{products.map((item) => (
+							<AdminCard
+								key={item.id}
+								title={item.name}
+								description={item.description}
+								imageUrl={item.imageUrl}
+								id={item.id}
+							/>
+						))}
+					</div>
+				)}
+			</div>
 		</div>
 	);
 };
+
 export default Product;

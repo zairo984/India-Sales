@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
 	Card,
 	CardDescription,
@@ -7,56 +9,58 @@ import {
 	CardTitle,
 } from "./ui/card";
 import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
 
-type CardProps = {
+interface CardProps {
 	title: string;
 	description?: string;
 	imageUrl?: string;
 	id?: string;
-};
+}
 
 const CardCompo: React.FC<CardProps> = ({
 	title,
 	description,
 	imageUrl,
-	id,
 }) => {
 	return (
-		<div className="w-[60%] lg:w-[30%]">
-			<Card className="w-full lg:w-[80%] h-[400px] shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl flex flex-col ">
-				{/* Image Section */}
-				<div className="w-full h-[250px]  flex items-center justify-center overflow-hidden">
-					<img
-						src={imageUrl || "https://via.placeholder.com/300"}
-						alt={title}
-						className="w-full h-auto max-h-full object-contain"
-					/>
-				</div>
+		<Card className="w-full max-w-sm bg-white shadow-lg rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group">
+			{/* Image Section */}
+			<div className="relative w-full h-[220px] overflow-hidden bg-gray-100">
+				<Image
+					src={imageUrl || "/placeholder-product.jpg"}
+					alt={title}
+					fill
+					className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+					sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+				/>
+			</div>
 
-				{/* Card Content */}
-				<CardHeader className=" flex flex-col items-center">
-					<CardTitle className="text-lg font-bold truncate">
-						{title.toUpperCase()}
-					</CardTitle>
-					<CardDescription className="text-sm hidden text-gray-600 ">
+			{/* Card Content */}
+			<CardHeader className="p-4 text-center">
+				<CardTitle className="text-lg font-bold text-gray-800 line-clamp-2 min-h-[56px]">
+					{title.toUpperCase()}
+				</CardTitle>
+				{description && (
+					<CardDescription className="text-sm text-gray-600 line-clamp-2 mt-2">
 						{description}
-						{id}
 					</CardDescription>
-				</CardHeader>
+				)}
+			</CardHeader>
 
-				{/* Card Footer - Button */}
-				<CardFooter className="p-4 w-full flex justify-center">
-					<Button
-						onClick={() => {
-							window.location.href = `/products/categories/${title.toLowerCase()}`;
-						}}
-						className="bg-blue-500 hover:bg-blue-600 w-full text-white px-4 py-2 rounded-md"
-					>
-						View More
-					</Button>
-				</CardFooter>
-			</Card>
-		</div>
+			{/* Card Footer - Button */}
+			<CardFooter className="p-4 pt-0">
+				<Button
+					asChild
+					className="w-full bg-gray-900 hover:bg-yellow-500 text-white hover:text-black transition-colors group/btn"
+				>
+					<Link href={`/products/categories/${title.toLowerCase()}`}>
+						<span>View More</span>
+						<ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+					</Link>
+				</Button>
+			</CardFooter>
+		</Card>
 	);
 };
 

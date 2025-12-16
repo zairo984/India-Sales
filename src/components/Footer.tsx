@@ -1,217 +1,128 @@
 "use client";
 
-// import { Facebook, Instagram, Twitter } from "lucide-react";
-import Link from "next/link"
+import Link from "next/link";
+import Image from "next/image";
+import { Mail, Phone, MapPin } from "lucide-react";
+
+const QUICK_LINKS = [
+	{ label: "Home", href: "/" },
+	{ label: "About Us", href: "/aboutus" },
+	{ label: "Contact Us", href: "/contactus" },
+	{ label: "Products", href: "/products" },
+];
+
+const CONTACT_INFO = {
+	email: "faraz@indiasales.co",
+	phones: ["+91 8009005768", "+91 8009494503"],
+	address: "40/120 Hospital Road, Parade, Kanpur - INDIA - 208001",
+};
 
 const Footer = () => {
 	return (
-		<footer className="bg-black  text-white py-2 flex flex-col items-center">
-			{/* <div className="border-b border-gray-700 mb-4 flex justify-between items-center w-[95%]  text-gray-500 text-sm">
-			<div className="" onClick={()=>{window.location.href="/"}}>
-					<img
-						src="/images/logo.jpg"
-						alt="Logo"
-						className="h-20 w-30 m-2"
-					/>
-			</div>
-			<div className="space-y-2 flex justify-end pr-9">
-					<h5 className="text-base font-semibold mx-3">Be a Part of our Community</h5>
-					<div className="flex  space-x-6">
-						<Link
-							href="https://facebook.com"
-							target="_blank"
-							aria-label="Facebook"
-						>
-							<Facebook className="w-4 h-4 hover:text-blue-500 transition-all" />
+		<footer className="bg-black text-white border-t border-gray-800" role="contentinfo">
+			<div className="container mx-auto px-4 py-4">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+					{/* Company Info */}
+					<div className="lg:col-span-2 space-y-4">
+						<Link href="/" className="inline-block" aria-label="India Sales Home">
+							<Image
+								src="/images/logo.jpg"
+								alt="India Sales Logo"
+								width={120}
+								height={80}
+								className="h-16 w-auto"
+							/>
 						</Link>
-						<Link
-							href="https://instagram.com"
-							target="_blank"
-							aria-label="Instagram"
-						>
-							<Instagram className="w-4 h-4 hover:text-pink-500 transition-all" />
-						</Link>
-						<Link
-							href="https://twitter.com"
-							target="_blank"
-							aria-label="Twitter"
-						>
-							<Twitter className="w-4 h-4 hover:text-blue-400 transition-all" />
-						</Link>
-					</div>
-				</div>
-			</div> */}
-			
-			<div className="container border-t border-gray-700 pt-4 mx-auto flex flex-col md:flex-row justify-between ">
-				
-			<div className="space-y-2 w-[40%]">
-			<div className="" onClick={()=>{window.location.href="/"}}>
-					<img
-						src="/images/logo.jpg"
-						alt="Logo"
-						className="h-20 w-30 "
-					/>
-			</div>
-					<p className="text-sm pl-2 text-gray-400 leading-relaxed">
-					India Sales, the company known for its value addition, is operating in the Manchester of the East since 1989. A dedicated group from Kanpur, India, with a simple goal of offering the best assortment of Equestrian products, we believe in integrating advance technology to manufacture finest quality of our products....
+						<p className="text-gray-400 leading-relaxed max-w-md">
+							India Sales, the company known for its value addition, is operating in the Manchester of the East since 1989. A dedicated group from Kanpur, India, with a simple goal of offering the best assortment of Equestrian products.
+						</p>
 						<Link
 							href="/aboutus"
-							className="text-blue-400 hover:text-white transition-all underline ml-1"
+							className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
 						>
-							Read More
+							Read More →
 						</Link>
-					</p>
-				</div>
-				
-				
 
-				{/* Quick Links: Horse */}
-				{/* <div className="space-y-2 px-4">
-					<h3 className="text-xl font-semibold">Horse</h3>
-					<ul className="space-y-4">
-						<li>
-							<Link
-								href="/products/Horse/fly%20mask"
-								className="hover:text-blue-400 transition-all"
-							>
-								Fly Mask
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/products/Horse/fly%20veil"
-								className="hover:text-blue-400 transition-all"
-							>
-								Fly Veil
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/products/horse"
-								className="hover:text-blue-400 transition-all"
-							>
-								More
-							</Link>
-						</li>
-					</ul>
-				</div> */}
-
-				{/* Quick Links: Rider */}
-				{/* <div className="space-y-2">
-					<h3 className="text-xl font-semibold">Rider</h3>
-					<ul className="space-y-4">
-						<li>
-							<Link
-								href="/products/Rider/breeches"
-								className="hover:text-blue-400 transition-all"
-							>
-								Breeches
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/products/Rider/riding%20tight"
-								className="hover:text-blue-400 transition-all"
-							>
-								Riding Tights
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/products/rider"
-								className="hover:text-blue-400 transition-all"
-							>
-								More
-							</Link>
-						</li>
-					</ul>
-				</div> */}
-
-				<div className="space-y-2">
-					<h3 className="text-xl font-semibold">Quick Links</h3>
-					<ul className="space-y-3">
-					<li>
-							<Link
-								href="/"
-								className="hover:text-blue-400 transition-all"
-							>
-								Home
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/aboutus"
-								className="hover:text-blue-400 transition-all"
-							>
-								About Us
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/contactus"
-								className="hover:text-blue-400 transition-all"
-							>
-								Contact Us
-							</Link>
-						</li>
-						<li>
-							<Link
-								href="/"
-								className="hover:text-blue-400 transition-all"
-							>
-								Certificates
-							</Link>
-						</li>
-					</ul>
-				</div>
-				{/* Social Media Links */}
-				{/* Contact Information */}
-				<div className="space-y-2 w-56">
-					<h3 className="text-2xl font-semibold text-white">
-						Contact Us
-					</h3>
-					<div className="flex items-center space-x-4 text-gray-400 text-sm">
-						<span>📧</span>
-						<a
-							href="mailto:faraz@indiasales.co"
-							className="hover:underline hover:text-blue-400 transition-all"
-						>
-							faraz@indiasales.co
-						</a>
+						{/* Social Links */}
+						{/* <div className="pt-4">
+							<h3 className="text-sm font-semibold text-gray-300 mb-3">Follow Us</h3>
+							<div className="flex gap-4">
+								{SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
+									<a
+										key={label}
+										href={href}
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label={label}
+										className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-yellow-400 hover:text-black transition-all duration-300"
+									>
+										<Icon size={18} />
+									</a>
+								))}
+							</div>
+						</div> */}
 					</div>
-					<div className="flex items-center space-x-4 text-gray-400 text-sm">
-						<span>📞</span>
-						<a
-							href="tel:+918009005768"
-							className="hover:underline hover:text-green-400 transition-all"
-						>
-							+91 8009005768
-						</a>
-						
-					</div>
-					<div className="flex items-center space-x-4 text-gray-400 text-sm"><span>📞</span>
-						<a
-							href="tel:+918009494503"
-							className=" hover:underline hover:text-green-400 ransition-all" >
-							+91 8009494503
-						</a></div>
-					<div className="flex items-start space-x-4 text-gray-400 text-sm">
-						<span>🏢</span>
-						<p>
-							<strong>Head Office:</strong> 40/120 Hospital Road,
-							Parade, Kanpur - INDIA - 208001
-						</p>
-					</div>
-					
-				</div>
 
-				
-				
+					{/* Quick Links */}
+					<div>
+						<h3 className="text-lg font-semibold mb-4 text-white">Quick Links</h3>
+						<nav aria-label="Footer navigation">
+							<ul className="space-y-3">
+								{QUICK_LINKS.map(({ label, href }) => (
+									<li key={label}>
+										<Link
+											href={href}
+											className="text-gray-400 hover:text-yellow-400 transition-colors duration-200 flex items-center gap-2"
+										>
+											<span className="text-yellow-400">›</span>
+											{label}
+										</Link>
+									</li>
+								))}
+							</ul>
+						</nav>
+					</div>
+
+					{/* Contact Information */}
+					<div>
+						<h3 className="text-lg font-semibold mb-4 text-white">Contact Us</h3>
+						<address className="not-italic space-y-4">
+							<a
+								href={`mailto:${CONTACT_INFO.email}`}
+								className="flex items-center gap-3 text-gray-400 hover:text-yellow-400 transition-colors group"
+							>
+								<Mail size={18} className="text-yellow-400 group-hover:scale-110 transition-transform" />
+								{CONTACT_INFO.email}
+							</a>
+							{CONTACT_INFO.phones.map((phone) => (
+								<a
+									key={phone}
+									href={`tel:${phone.replace(/\s/g, "")}`}
+									className="flex items-center gap-3 text-gray-400 hover:text-green-400 transition-colors group"
+								>
+									<Phone size={18} className="text-green-400 group-hover:scale-110 transition-transform" />
+									{phone}
+								</a>
+							))}
+							<div className="flex items-start gap-3 text-gray-400">
+								<MapPin size={18} className="text-blue-400 flex-shrink-0 mt-1" />
+								<span>{CONTACT_INFO.address}</span>
+							</div>
+						</address>
+					</div>
+				</div>
 			</div>
 
 			{/* Bottom Bar */}
-			<div className="border-t w-[95%] border-gray-700 mt-5 pt-6 text-center text-gray-500 text-sm">
-				© {new Date().getFullYear()} IndiaSales. All Rights Reserved.
+			<div className="border-t border-gray-800">
+				<div className="container mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+					<p className="text-gray-500 text-sm">
+						© {new Date().getFullYear()} India Sales. All Rights Reserved.
+					</p>
+					<p className="text-gray-600 text-xs">
+						Manufacturing Quality Equestrian Products Since 1989
+					</p>
+				</div>
 			</div>
 		</footer>
 	);

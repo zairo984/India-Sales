@@ -2,11 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/db";
 import Certification from "@/models/certificates";
 
-// Connect to MongoDB
-connectDB();
-
 export async function GET() {
   try {
+    await connectDB();
     const certifications = await Certification.find().sort({ uploadedAt: -1 });
     return NextResponse.json(certifications, { status: 200 });
   } catch (error) {
@@ -17,10 +15,11 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   try {
+    await connectDB();
     const body = await req.json();
     console.log(body)
-const certName = body.certName as string;
-const fileUrl = body.fileUrl;
+    const certName = body.certName as string;
+    const fileUrl = body.fileUrl;
  // Getting the image URL from the frontend
 
     if (!certName || !fileUrl) {

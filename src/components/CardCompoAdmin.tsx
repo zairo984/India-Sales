@@ -1,6 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
 	Card,
 	CardContent,
@@ -10,91 +12,80 @@ import {
 } from "./ui/card";
 import { Button } from "./ui/button";
 import { FaWhatsapp } from "react-icons/fa";
+import { Eye } from "lucide-react";
 
-type CardProps = {
+const WHATSAPP_NUMBER = "918009005768";
+
+interface CardProps {
 	title: string;
 	description?: string;
 	imageUrl?: string;
 	id?: string;
-};
+}
 
 const AdminCard: React.FC<CardProps> = ({
 	title,
 	description,
 	imageUrl,
-	id
-	
+	id,
 }) => {
-	// const handleOnClick = async (id: string | undefined) => {
-	// 	if (!id) {
-	// 		console.error("Invalid ID: ID is undefined");
-	// 		return;
-	// 	}
-
-	// 	console.log("Card clicked with ID:", id);
-	// 	try {
-	// 		const response = await axios.get(`/api/products/${id}`);
-	// 		console.log("Response of card click: ", response.data);
-	// 	} catch (err) {
-	// 		console.error("Error fetching product:", err);
-	// 	}
-	// };
-	function handleEnquiry(productName: string) {
-		const phoneNumber = "918009005768"; // No "+" or spaces
+	const handleEnquiry = useCallback(() => {
 		const message = encodeURIComponent(
-		  `Hi, I am interested in "${productName}". Can you share more details?`
+			`Hi, I am interested in "${title}". Can you share more details?`
 		);
-		const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-	  
-		if (typeof window !== "undefined") {
-		  window.open(whatsappURL, "_blank", "noopener,noreferrer");
-		}
-	  }
-	  
+		window.open(
+			`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,
+			"_blank",
+			"noopener,noreferrer"
+		);
+	}, [title]);
 
 	return (
-		<div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4">
-			<Card className="group relative  m-2  overflow-hidden transition-transform transform hover:scale-105 hover:shadow-xl">
-				{/* Image Section */}
-				<div className="w-full h-[250px]  flex items-center justify-center overflow-hidden">
-					<img
-						src={imageUrl || "https://via.placeholder.com/300"}
-						alt={title}
-						className="w-full h-auto max-h-full object-contain"
-					/>
-				</div>
+		<Card className="group bg-white overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+			{/* Image Section */}
+			<div className="relative w-full h-[220px] overflow-hidden bg-gray-100">
+				<Image
+					src={imageUrl || "/placeholder-product.jpg"}
+					alt={title}
+					fill
+					className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+					sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+				/>
+			</div>
 
-				{/* Card Content */}
-				<CardHeader className="p-4">
-					<CardTitle className="text-lg  text-center font-semibold text-gray-800">
-						{title}
-					</CardTitle>
-					<CardContent className="text-sm text-gray-600 hidden line-clamp-2">
+			{/* Card Content */}
+			<CardHeader className="p-4 pb-2">
+				<CardTitle className="text-lg text-center font-semibold text-gray-800 line-clamp-2 min-h-[56px]">
+					{title}
+				</CardTitle>
+				{description && (
+					<CardContent className="text-sm text-gray-600 line-clamp-2 p-0 mt-1">
 						{description}
 					</CardContent>
-				</CardHeader>
+				)}
+			</CardHeader>
 
-				{/* Card Footer */}
-				<CardFooter className="p-4 justify-center gap-2">
-					<Button
-						className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
-						onClick={() => {
-							window.location.href = `products/${id}`;
-						}} // ✅ Pass id directly
-					>
+			{/* Card Footer */}
+			<CardFooter className="p-4 pt-2 flex flex-col sm:flex-row gap-2">
+				<Button
+					asChild
+					className="flex-1 bg-gray-900 hover:bg-yellow-500 text-white hover:text-black transition-colors gap-2"
+				>
+					<Link href={`products/${id}`}>
+						<Eye className="h-4 w-4" />
 						View Details
-					</Button>
-					<Button
-						onClick={() =>
-							handleEnquiry(title)
-						}
-						className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg"
-					>
-						Enquire <FaWhatsapp />
-					</Button>
-				</CardFooter>
-			</Card>
-		</div>
+					</Link>
+				</Button>
+				<Button
+					onClick={handleEnquiry}
+					className="flex-1 bg-green-500 hover:bg-green-600 text-white gap-2"
+					aria-label={`Enquire about ${title} on WhatsApp`}
+				>
+					Enquire <FaWhatsapp />
+				</Button>
+			</CardFooter>
+		</Card>
 	);
 };
+
 export { AdminCard };

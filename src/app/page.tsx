@@ -1,30 +1,14 @@
-
-
 import Hero from "@/components/Hero";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+	title: "Home | Premium Equestrian Products",
+	description: "Discover premium equestrian products for horses and riders. Quality saddle pads, horse rugs, riding apparel & accessories from India Sales.",
+};
 
 export default function Home() {
-	// const [categories, setCategories] = useState<string[]>([]);
-	// const [subCategories, setSubCategories] = useState<
-	// 	{ category: string; name: string }[]
-	// >([]);
-
-	// const fetchDropDownData = async () => {
-	// 	try {
-	// 		const response = await axios.get("/api/DropDownData");
-	// 		setCategories(response.data.categories);
-	// 		setSubCategories(response.data.subCategories);
-	// 	} catch (err: any) {
-	// 		console.error("error in fetching drop-down data: ", err);
-	// 	}
-	// };
-
-	// useEffect(() => {
-	// 	fetchDropDownData();
-	// }, []);
-
 	return (
-		<div className=" max-h-screen overflow-y-hidden">
+		<div className="min-h-screen">
 			<Hero />
 		</div>
 	);

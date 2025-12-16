@@ -1,115 +1,116 @@
 "use client";
-import { Button } from "./ui/button";
 
+import { useCallback } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "./ui/button";
 import Certificates from "./certificate";
 import Footer from "./Footer";
 import HeroCarousel from "./HeroCarousal";
 import { FaWhatsapp } from "react-icons/fa";
-// import Link from "next/link";
-// import { Link2 } from "lucide-react";
+
+const WHATSAPP_NUMBER = "918009005768";
+
+interface HeroSectionProps {
+	title: string;
+	description: string;
+	buttonText: string;
+	href: string;
+	backgroundImage: string;
+	height?: string;
+}
+
+const HeroSection = ({ title, description, buttonText, href, backgroundImage, height = "h-[400px]" }: HeroSectionProps) => (
+	<div className={`relative ${height} w-full overflow-hidden group`}>
+		<Image
+			src={backgroundImage}
+			alt={title}
+			fill
+			className="object-cover transition-transform duration-500 group-hover:scale-105"
+			priority
+			sizes="(max-width: 640px) 100vw, 50vw"
+		/>
+		<div className="absolute inset-0 bg-black/40" />
+		<div className="relative z-10 h-full flex flex-col items-center justify-center text-white text-center px-4">
+			<h2 className="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">
+				{title}
+			</h2>
+			<p className="text-base md:text-lg font-light max-w-md mb-6 drop-shadow-md">
+				{description}
+			</p>
+			<Button
+				asChild
+				className="bg-transparent border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black transition-all duration-300 px-8 py-3"
+			>
+				<Link href={href}>{buttonText}</Link>
+			</Button>
+		</div>
+	</div>
+);
 
 const Hero = () => {
-	function handleEnquiry() {
-		const phoneNumber = "918009005768"; // No "+" or spaces
+	const handleWhatsAppClick = useCallback(() => {
 		const message = encodeURIComponent(
-			`Hi, I am interested in your Products. Can you share more details?`
+			"Hi, I am interested in your Products. Can you share more details?"
 		);
-		const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
-
-		if (typeof window !== "undefined") {
-			window.open(whatsappURL, "_blank", "noopener,noreferrer");
-		}
-	}
+		const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+		window.open(whatsappURL, "_blank", "noopener,noreferrer");
+	}, []);
 
 	return (
-		<div className="absolute top-0 overflow-hidden">
-			<div>
+		<div className="relative">
+			{/* Hero Carousel Section */}
+			<section aria-label="Featured products carousel">
 				<HeroCarousel />
-			</div>
-			<div className="relative overflow-hidden">
-				<div className="fixed bottom-4 right-4 z-10">
-					<div
-						
-						className="bg-green-500 w-16 rounded-full  flex justify-center items-center opacity-70  m-8 shadow-lg shadow-green-400"
-					>
-						<FaWhatsapp onClick={ handleEnquiry} className="text-white text-5xl m-2" />
-					</div>
-				</div>
+			</section>
 
-				<div className=" flex flex-wrap w-full text-center items-center justify-center">
-					<div
-						style={{ backgroundImage: "url('/main_horse.jpg')" }}
-						className="bg-cover w-[100%] sm:w-[50%] bg-center h-[800px]  text-white flex flex-col items-center justify-center"
-					>
-						{/* <h1 className="text-2xl font-bold ">Trending</h1> */}
-						<h1 className="text-5xl font-extrabold">
-							All Products
-						</h1>
-						<p className=" xl font-light w-[70%] lg:w-[60%] ">
-							Discover top-quality products designed to enhance
-							the performance, comfort, and well-being of both
-							horses and riders.
-						</p>
-						<Button
-							className="bg-transparent border-2 w-[30%] border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black"
-							onClick={() => [
-								(window.location.href = "/products"),
-							]}
-						>
-							Discover Now
-						</Button>
-					</div>
-					<div className="flex flex-col w-[100%] sm:w-[50%]">
-						<div
-							style={{ backgroundImage: "url('/horse2.jpg')" }}
-							className="bg-cover bg-center h-[400px] w-full  text-white flex flex-col items-center justify-center"
-						>
-							{/* <h1 className="text-2xl font-bold ">Trending</h1> */}
-							<h1 className="text-5xl font-extrabold">Horses</h1>
-							<p className=" xl font-light w-[70%] lg:w-[60%] ">
-								Give your horse the best care and comfort with
-								our top-quality gear and accessories. Whether
-								for training, competition, or daily care, we
-								have everything your horse needs.
-							</p>
-							<Button
-								className="bg-transparent border-2 w-[30%] text-yellow-400
-					 border-yellow-400 hover:bg-yellow-400 hover:text-black"
-								onClick={() => {
-									window.location.href = "/products/horse";
-								}}
-							>
-								Discover Now
-							</Button>
-						</div>
-						<div
-							style={{ backgroundImage: "url('/rider.jpg')" }}
-							className="bg-cover bg-center h-[400px] w-full  text-white flex flex-col items-center justify-center"
-						>
-							{/* <h1 className="text-2xl font-bold ">Trending</h1> */}
-							<h1 className="text-5xl font-extrabold">Riders</h1>
-							<p className=" xl font-light w-[70%] lg:w-[60%] ">
-								Ride with confidence and style using our premium
-								selection of equestrian gear tailored for riders
-								of all levels.
-							</p>
-							<Button
-								className="bg-transparent border-2 w-[30%] border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black"
-								onClick={() => [
-									(window.location.href = "/products/rider"),
-								]}
-							>
-								Discover Now
-							</Button>
-						</div>
-					</div>
-				</div>
+			{/* WhatsApp Floating Button */}
+			<button
+				onClick={handleWhatsAppClick}
+				className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-green-400/50"
+				aria-label="Contact us on WhatsApp"
+			>
+				<FaWhatsapp className="text-white text-3xl" />
+			</button>
 
+			{/* Product Categories Section */}
+			<section className="grid grid-cols-1 sm:grid-cols-2" aria-label="Product categories">
+				<HeroSection
+					title="All Products"
+					description="Discover top-quality products designed to enhance the performance, comfort, and well-being of both horses and riders."
+					buttonText="Discover Now"
+					href="/products"
+					backgroundImage="/main_horse.jpg"
+					height="h-[500px] sm:h-[800px]"
+				/>
+				
+				<div className="flex flex-col">
+					<HeroSection
+						title="Horses"
+						description="Give your horse the best care and comfort with our top-quality gear and accessories."
+						buttonText="Discover Now"
+						href="/products/horse"
+						backgroundImage="/horse2.jpg"
+					/>
+					<HeroSection
+						title="Riders"
+						description="Ride with confidence and style using our premium selection of equestrian gear."
+						buttonText="Discover Now"
+						href="/products/rider"
+						backgroundImage="/rider.jpg"
+					/>
+				</div>
+			</section>
+
+			{/* Certificates Section */}
+			<section aria-label="Our certifications">
 				<Certificates />
-			</div>
+			</section>
 
+			{/* Footer */}
 			<Footer />
 		</div>
 	);
 };
+
 export default Hero;

@@ -1,59 +1,136 @@
 import { NextRequest, NextResponse } from "next/server";
-
+import { connectDB } from "@/lib/db";
 import Product from "@/models/products";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 60; // Revalidate every 60 seconds
+
+interface LeanProduct {
+	_id: string;
+	name: string;
+	category?: string;
+	subCategory?: string;
+	description?: string;
+	price?: number;
+	quantity?: number;
+	imageUrl?: string;
+}
 
 export async function GET() {
 	try {
-		const product = await Product.find();
+		await connectDB();
+		
+		const products = await Product.find().sort({ createdAt: -1 }).lean<LeanProduct[]>();
 
-		// console.log("product: ", product);
-		// console.log("subCategories: ", subCategories);
-		const productArray = product.map((subCategory) => ({
-			id: subCategory.id,
-			name: subCategory.name,
-			category: subCategory.category,
-			subCategory: subCategory.subCategory,
-			description: subCategory.description,
-			price: subCategory.price,
-			quantity: subCategory.quantity,
-			imageUrl: subCategory.imageUrl,
+		const productArray = products.map((product) => ({
+			id: product._id.toString(),
+			name: product.name,
+			category: product.category || "",
+			subCategory: product.subCategory || "",
+			description: product.description || "",
+			price: product.price || 0,
+			quantity: product.quantity || 0,
+			imageUrl: product.imageUrl || "",
 		}));
 
-		return NextResponse.json({ products: productArray }, { status: 200 });
+		return NextResponse.json(
+			{ products: productArray },
+			{ 
+				status: 200,
+				headers: {
+					"Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+				},
+			}
+		);
 	} catch (err) {
-		// const error = new Error(err);
-		const error = new Error((err as Error).message);
-		return NextResponse.json({ error: error.message }, { status: 500 });
+		console.error("Error fetching products:", err);
+		return NextResponse.json(
+			{ error: "Failed to fetch products" },
+			{ status: 500 }
+		);
 	}
 }
+
 export async function POST(req: NextRequest) {
 	try {
+		await connectDB();
+		
 		const body = await req.json();
-		// console.log(body);
-		if (await Product.findOne({ name: body.name })) {
+
+		// Validate required fields
+		if (!body.name || !body.name.trim()) {
 			return NextResponse.json(
-				{ message: "Category already exists" },
+				{ message: "Product name is required" },
 				{ status: 400 }
 			);
 		}
-		await Product.create(body);
-		// console.log(category);
-		return NextResponse.json({ message: "success" }, { status: 200 });
+
+		// Check for duplicate
+		const existingProduct = await Product.findOne({ 
+			name: { $regex: new RegExp(`^${body.name}$`, "i") } 
+		});
+		
+		if (existingProduct) {
+			return NextResponse.json(
+				{ message: "A product with this name already exists" },
+				{ status: 400 }
+			);
+		}
+
+		const product = await Product.create({
+			name: body.name.trim(),
+			description: body.description?.trim() || "",
+			imageUrl: body.imageUrl || "",
+			price: body.price || 0,
+			quantity: body.quantity || 0,
+			category: body.category || "",
+			subCategory: body.subCategory || "",
+		});
+
+		return NextResponse.json(
+			{ message: "Product created successfully", productId: product._id },
+			{ status: 201 }
+		);
 	} catch (err) {
-		console.log(err);
-		return NextResponse.json({ error: err }, { status: 500 });
+		console.error("Error creating product:", err);
+		return NextResponse.json(
+			{ error: "Failed to create product" },
+			{ status: 500 }
+		);
 	}
 }
+
 export async function DELETE(req: NextRequest) {
 	try {
-		// console.log(req);
+		await connectDB();
+		
 		const body = await req.json();
-		const id = body.id;
-		await Product.findByIdAndDelete(id);
-		// console.log(product);
-		return NextResponse.json({ message: "success" }, { status: 200 });
+		
+		if (!body.id) {
+			return NextResponse.json(
+				{ message: "Product ID is required" },
+				{ status: 400 }
+			);
+		}
+
+		const deletedProduct = await Product.findByIdAndDelete(body.id);
+		
+		if (!deletedProduct) {
+			return NextResponse.json(
+				{ message: "Product not found" },
+				{ status: 404 }
+			);
+		}
+
+		return NextResponse.json(
+			{ message: "Product deleted successfully" },
+			{ status: 200 }
+		);
 	} catch (err) {
-		console.log(err);
-		return NextResponse.json({ error: err }, { status: 500 });
+		console.error("Error deleting product:", err);
+		return NextResponse.json(
+			{ error: "Failed to delete product" },
+			{ status: 500 }
+		);
 	}
 }
